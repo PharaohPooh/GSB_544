@@ -1,0 +1,5 @@
+[project]
+name = "Practice_Activity_1.3-Data_Visualization_with_mtcars_JRC"
+version = "0.1.0"
+requires-python = ">= 3.9.6"
+dependencies = []
