@@ -1,6 +1,10 @@
 ---
 title: Quarto Computations
-echo: false
+author: James Compagno
+fig-height: 3.5
+fig-width: 6
+execute:
+    echo: false
 ---
 
 This dataset contains a subset of the fuel economy data from the EPA.
