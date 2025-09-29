@@ -1,0 +1,267 @@
+---
+title: Lab 1
+jupyter: python3
+format:
+    html:
+        embed-resources: true
+---
+This is a recreation of the Gapminder visuals by James Compagno for GSB 544: Data Science and Machine Learning with Python. 
+Data may be found at [Gapminder](https://www.gapminder.org/).
+
+
+
+
+
+
+
+```{python}
+import statsmodels.api as sm
+import pandas as pd
+import plotnine as p9
+
+
+df1 = pd.read_csv("Data/q1data.csv")
+df2 = pd.read_csv("Data/q2data.csv")
+df3 = pd.read_csv("Data/q3data.csv")
+```
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/, height: 1000}
+df1
+```
+
+## Task 1
+
+Below is a plot of a visualization in Gapminder (the default/starting one actually). Look it over and take note of the variables being visualized.
+
+1. Identify, and list here, what aesthetics are being used and which variables are being mapped to each aesthetic.
+    
+    -Asetics/Variables
+        x = Income 
+        y = life expactancy 
+        color = four_regions
+        This graph is measuring the effect of income on life expectncy and highlighting differences by dividing the world into 4 regions. 
+    -Geometry
+        Bubble Chart
+
+2. Import the q1data.csv dataset.
+
+3. Recreate the plot as best you can using plotnine.
+
+```{python}
+#Type Check
+df1.dtypes
+```
+
+```{python}
+#Data Clean
+df1 = df1.dropna(subset=["four_regions"])
+```
+
+```{python}
+#Task 1 Graph Here
+(p9.ggplot(df1,
+p9.aes(
+  x = "income",
+  y = "life_exp",
+  fill = "four_regions",
+  size = "population"
+))
++ p9.geom_point(shape='o', color='black', stroke=0.1, alpha=1) + p9.scale_size(range=(2, 10))
+    + p9.labs(
+        x="Income", y="Life expectancy") 
+      + p9.annotate("text", x=6000, y=45, label="2 0 1 0", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
+      + p9.scale_x_log10(breaks=[500,1000,2000,4000,8000,16000,32000,64000])
+      + p9.scale_y_continuous(limits=(20, 95), breaks=range(10, 100, 10))
+      + p9.theme(figure_size=(10, 4.5))
+      + p9.scale_fill_manual( values={"africa":"#00d5e9", "americas":"#99ef33",
+            "asia":"#ff5872", "europe":"#ffec33"}, limits=["africa","americas","asia","europe"])
+      + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+
+    )
+```
+
+4. What other geometries could you use here besides geom_point? Provide an actual plot of another geometry being used here and why it’s good or bad for visualizing these data.
+
+You can use a violin plot to highlight the variation in the continemnts more. 
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/, height: 497}
+#Task 1 Alternative Version
+(p9.ggplot(df1,
+p9.aes(
+  x = "income",
+  y = "life_exp",
+  fill = "four_regions",
+  size = "population"
+))
++ p9.geom_violin(alpha=.7) 
+ + p9.labs(
+        x="Income", y="Life expectancy")
+      + p9.theme(figure_size=(10, 6.5))
+      + p9.scale_fill_manual( values={"africa":"#00d5e9", "americas":"#99ef33",
+            "asia":"#ff5872", "europe":"#ffec33"}, limits=["africa","americas","asia","europe"])
+      + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=1.5))
+      + p9.annotate("text", x=50000, y=65, label="2 0 1 0", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
+    )
+```
+
+## Task 2
+
+
+Below is another plot of a visualization in Gapminder. Look it over and take note of the variables being visualized.
+
+```{python}
+df2
+```
+
+1. Identify, and list here, what aesthetics are being used and which variables are being mapped to each aesthetic.
+
+    -Asetics/Variables
+        x = Exports as a percentage of GDP
+        y = Imports as a percentage of GDP
+        fill = The four_regions
+        size = Energy consumption per person
+        This graph is measuring the interaction between exports and imports on a country (if both increase or decrease simultaneously).
+    -Geometry
+        Bubble Chart
+
+
+2. Import the q2data.csv dataset.
+
+3. Recreate the plot as best you can using plotnine.
+
+```{python}
+#Data Clean
+df2 = df2.dropna(subset=["imports","exports","energy","four_regions"], how='any')
+```
+
+```{python}
+#Type Check
+df2.dtypes
+```
+
+```{python}
+#type clean
+df2["energy"] = df2["energy"].astype(float)
+```
+
+```{python}
+#Task 2 Graph Here
+(p9.ggplot(df2,
+p9.aes(
+  x = "exports",
+  y = "imports",
+  fill = "four_regions",
+  size = "energy"
+))
++ p9.geom_point(shape='o', color='black', stroke=0.1, alpha=1) 
+    + p9.scale_size(range=(3, 15))
+    + p9.labs(x="Exmports (\% of GDP)", y="Imports (\% of GDP)") 
+      + p9.theme(figure_size=(10, 4.5))
+      + p9.scale_x_continuous(limits=(20, 220),breaks=[20,40,60,80,100,120,140,160,180, 200, 220])
+      + p9.scale_y_continuous(limits=(0, 400),breaks=[50,100,150,200,250,300,350,400])
+      + p9.scale_fill_manual( values={"africa":"#00d5e9", "americas":"#99ef33",
+            "asia":"#ff5872", "europe":"#ffec33"}, limits=["africa","americas","asia","europe"])
+      + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+      + p9.annotate("text", x=120, y=250, label="1 9 9 7", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
+    )
+```
+
+4. What other geometries could you use here besides geom_point? Provide an actual plot of another geometry being used here and why it’s good or bad for visualizing these data.
+
+```{python}
+#Task 2 Graph Here
+(p9.ggplot(df2,
+p9.aes(
+  x = "exports",
+  y = "imports",
+  fill = "four_regions",
+  size = "energy"
+))
++ p9.geom_boxplot() 
+    + p9.labs(
+        title="1997",
+        x="Exmports (\% of GDP)", y="Imports (\% of GDP)") 
+      + p9.theme(figure_size=(10, 4.5))
+      + p9.scale_x_continuous(limits=(20, 120))
+      + p9.scale_y_continuous(limits=(0, 150))
+      + p9.scale_fill_manual( values={"africa":"#00d5e9", "americas":"#99ef33",
+            "asia":"#ff5872", "europe":"#ffec33"}, limits=["africa","americas","asia","europe"])
+      + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+      + p9.annotate("text", x=70, y=75, label="1 9 9 7", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
+    )
+```
+
+## Task 3
+
+
+Below is a final plot of a visualization in Gapminder. Look it over and take note of the variables being visualized.
+
+```{python}
+df3
+```
+
+1. Identify, and list here, what aesthetics are being used and which variables are being mapped to each aesthetic.
+-Asetics/Variables
+        x = "internet_users",
+        y = "gdp",
+        fill = "four_regions",
+        size = "income"
+        This graph is measuring the interaction between internet users and GDP on a country (if both increase or decrease simultaneously). With income as a highlighting effect. 
+    -Geometry
+        Bubble Chart
+
+2. Import the q3data.csv dataset.
+
+3. Recreate the plot as best you can using plotnine.
+
+```{python}
+#Data Clean
+df3 = df3.dropna(subset=["four_regions"], how='any')
+```
+
+```{python}
+#Task 3 Graph Here
+(p9.ggplot(df3,
+p9.aes(
+  x = "internet_users",
+  y = "gdp",
+  fill = "four_regions",
+  size = "income"
+))
++ p9.geom_point(shape='o', color='black', stroke=0.1, alpha=1) + p9.scale_size(range=(2, 10))
+    + p9.labs(x="Individuals using the Internet", y="GDP/capita") 
+      + p9.scale_x_continuous(limits=(0, 95), breaks=range(10, 100, 10))
+      + p9.scale_y_log10(breaks=[200,500,1000,2000,5000,10000,20000,50000,100000])
+      + p9.theme(figure_size=(10, 4.5))
+      + p9.scale_fill_manual( values={"africa":"#00d5e9", "americas":"#99ef33",
+            "asia":"#ff5872", "europe":"#ffec33"}, limits=["africa","americas","asia","europe"])
+      + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+      + p9.annotate("text", x=45, y=5000, label="2 0 0 1", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
+    )
+```
+
+4. What other geometries could you use here besides geom_point? Provide an actual plot of another geometry being used here and why it’s good or bad for visualizing these data.
+
+```{python}
+#Task 3 Alternative Graph Here
+(p9.ggplot(df3,
+p9.aes(
+  x = "internet_users",
+  y = "gdp",
+  fill = "four_regions",
+  size = "income"
+))
++ p9.geom_violin(alpha=.7) 
+    + p9.labs(x="Individuals using the Internet", y="GDP/capita") 
+      + p9.theme(figure_size=(10, 4.5))
+      + p9.scale_x_continuous(limits=(0, 95), breaks=range(10, 70, 10))
+      + p9.scale_y_log10(breaks=[200,500,1000,2000,5000,10000,20000,50000,100000,200000])
+      + p9.scale_fill_manual( values={"africa":"#00d5e9", "americas":"#99ef33",
+            "asia":"#ff5872", "europe":"#ffec33"}, limits=["africa","americas","asia","europe"])
+      + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+      + p9.annotate("text", x=45, y=5000, label="2 0 0 1", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
+    )
+```
+
