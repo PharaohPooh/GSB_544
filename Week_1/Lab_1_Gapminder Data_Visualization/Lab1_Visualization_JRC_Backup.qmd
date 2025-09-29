@@ -1,17 +1,12 @@
 ---
-format: 
-  html:
-    embed-resources: true
-execute:
-  echo: true
-code-fold: true
-title: Data of Global Indicators – Gapminder
+title: Lab 1
 jupyter: python3
+format:
+    html:
+        embed-resources: true
 ---
 This is a recreation of the Gapminder visuals by James Compagno for GSB 544: Data Science and Machine Learning with Python. 
 Data may be found at [Gapminder](https://www.gapminder.org/).
-
-[Link to Project Github](https://github.com/PharaohPooh/GSB_544/tree/main/Week_1/Lab_1_Gapminder%20Data_Visualization)
 
 
 
@@ -72,9 +67,9 @@ p9.aes(
   fill = "four_regions",
   size = "population"
 ))
-+ p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1) 
-      + p9.scale_size(range=(1, 20))
-      + p9.labs(x="Income", y="Life expectancy") 
++ p9.geom_point(shape='o', color='black', stroke=0.1, alpha=1) + p9.scale_size(range=(2, 10))
+    + p9.labs(
+        x="Income", y="Life expectancy") 
       + p9.annotate("text", x=6000, y=45, label="2 0 1 0", family= "Helvetica Neue", alpha=0.5, size=140, color="#e1e1e1")
       + p9.scale_x_log10(breaks=[500,1000,2000,4000,8000,16000,32000,64000])
       + p9.scale_y_continuous(limits=(20, 95), breaks=range(10, 100, 10))
@@ -160,8 +155,8 @@ p9.aes(
   fill = "four_regions",
   size = "energy"
 ))
-+ p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1) 
-    + p9.scale_size(range=(0.5, 30))
++ p9.geom_point(shape='o', color='black', stroke=0.1, alpha=1) 
+    + p9.scale_size(range=(3, 15))
     + p9.labs(x="Exmports (\% of GDP)", y="Imports (\% of GDP)") 
       + p9.theme(figure_size=(10, 4.5))
       + p9.scale_x_continuous(limits=(20, 220),breaks=[20,40,60,80,100,120,140,160,180, 200, 220])
@@ -235,7 +230,7 @@ p9.aes(
   fill = "four_regions",
   size = "income"
 ))
-+ p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1) + p9.scale_size(range=(1, 20))
++ p9.geom_point(shape='o', color='black', stroke=0.1, alpha=1) + p9.scale_size(range=(2, 10))
     + p9.labs(x="Individuals using the Internet", y="GDP/capita") 
       + p9.scale_x_continuous(limits=(0, 95), breaks=range(10, 100, 10))
       + p9.scale_y_log10(breaks=[200,500,1000,2000,5000,10000,20000,50000,100000])
