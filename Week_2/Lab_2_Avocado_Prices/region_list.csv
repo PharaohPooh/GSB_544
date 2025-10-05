@@ -1,0 +1,55 @@
+﻿geography,city,state,region
+Albany,Albany,New York,Northeast
+Atlanta,Atlanta,Georgia,Southeast
+Baltimore/Washington,Baltimore / Washington,Maryland / D.C.,Northeast
+Boise,Boise,Idaho,West
+Boston,Boston,Massachusetts,Northeast
+Buffalo/Rochester,Buffalo / Rochester,New York,Northeast
+California,,California,West
+Charlotte,Charlotte,North Carolina,Southeast
+Chicago,Chicago,Illinois,Great Lakes
+Cincinnati/Dayton,Cincinnati / Dayton,Ohio,Great Lakes
+Columbus,Columbus,Ohio,Great Lakes
+Dallas/Ft. Worth,Dallas / Fort Worth,Texas,South Central
+Denver,Denver,Colorado,West
+Detroit,Detroit,Michigan,Great Lakes
+Grand Rapids,Grand Rapids,Michigan,Great Lakes
+Great Lakes,,,Great Lakes
+Harrisburg/Scranton,Harrisburg / Scranton,Pennsylvania,Northeast
+Hartford/Springfield,Hartford / Springfield,Connecticut / Massachusetts,Northeast
+Houston,Houston,Texas,South Central
+Indianapolis,Indianapolis,Indiana,Great Lakes
+Jacksonville,Jacksonville,Florida,Southeast
+Las Vegas,Las Vegas,Nevada,West
+Los Angeles,Los Angeles,California,West
+Louisville,Louisville,Kentucky,Midsouth
+Miami/Ft. Lauderdale,Miami / Fort Lauderdale,Florida,Southeast
+Midsouth,,,Midsouth
+Nashville,Nashville,Tennessee,Midsouth
+New Orleans/Mobile,New Orleans / Mobile,Louisiana / Alabama,South Central
+New York,New York City,New York,Northeast
+Northeast,,,Northeast
+Northern New England,,,Northern New England
+Orlando,Orlando,Florida,Southeast
+Philadelphia,Philadelphia,Pennsylvania,Northeast
+Phoenix/Tucson,Phoenix / Tucson,Arizona,West
+Pittsburgh,Pittsburgh,Pennsylvania,Northeast
+Plains,,,Plains
+Portland,Portland,Oregon,West
+Raleigh/Greensboro,Raleigh / Greensboro,North Carolina,Southeast
+Richmond/Norfolk,Richmond / Norfolk,Virginia,Southeast
+Roanoke,Roanoke,Virginia,Southeast
+Sacramento,Sacramento,California,West
+San Diego,San Diego,California,West
+San Francisco,San Francisco,California,West
+Seattle,Seattle,Washington,West
+South Carolina,,South Carolina,Southeast
+South Central,,,South Central
+Southeast,,,Southeast
+Spokane,Spokane,Washington,West
+St. Louis,St. Louis,Missouri,Plains
+Syracuse,Syracuse,New York,Northeast
+Tampa,Tampa,Florida,Southeast
+Total U.S.,,,
+West,,,West
+West Tex/New Mexico,,,West Tex/New Mexico
