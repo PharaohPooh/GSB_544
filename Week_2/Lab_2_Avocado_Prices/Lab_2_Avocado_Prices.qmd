@@ -1,0 +1,406 @@
+---
+format:
+  html:
+    embed-resources: true
+execute:
+  echo: true
+code-fold: true
+title: Avacado Prices Analysis
+author: James Compagno
+jupyter: python3
+---
+
+
+Files and work can be found here: https://github.com/PharaohPooh/GSB_544/tree/main/Week_2/Lab_2_Avocado_Prices 
+
+# Setup
+## 0. Import the data and declare your package dependencies.
+
+```{python}
+import numpy as np
+import pandas as pd
+import plotnine as p9
+
+df_avocado = pd.read_csv("avocado_updated_2020.csv")
+df_region = pd.read_csv("region_list.csv")
+```
+
+```{python}
+df_avocado.head()
+```
+
+## 1. Briefly describe the data set. What information does it contain?
+
+The data is a week by week of Avocado sales for the Hass variety across different bag sizes and Product Lookup codes (PLU’s) across multiple regions. Regions are of variying size and some regions conrain data from other datapoints Ie the Los Angeles' region's data is also counted in California, West, and Total US. 
+
+## 2. Clean the data in any way you see fit.
+
+```{python}
+#Update the regions list by joining df_region on df_avocado
+df_avocado_region = df_avocado.merge(df_region, on=["geography"])
+#drop the unecessary georgraphy column 
+df_avocado_region_clean = df_avocado_region.drop(columns=['geography'])
+df_avocado_region_clean.head()
+```
+
+```{python}
+#drop all the summary data points (ie "northeast" & "Total U.S."). Ie remove every row without a value in the city column 
+df_avocado_region_clean2 = df_avocado_region_clean.dropna(subset=['city'])
+df_avocado_region_clean2.iloc[25:36]
+```
+
+```{python}
+#split date into day, month, year 
+df_avocado_region_clean3 = df_avocado_region_clean2.copy()
+
+df_avocado_region_clean3['date'] = pd.to_datetime(df_avocado_region_clean3['date'])
+
+df_avocado_region_clean3['year'] = df_avocado_region_clean3['date'].dt.year
+df_avocado_region_clean3['month'] = df_avocado_region_clean3['date'].dt.month
+df_avocado_region_clean3['day'] = df_avocado_region_clean3['date'].dt.day
+```
+
+```{python}
+# Rename PLU columns
+df_avocado_region_clean3 = df_avocado_region_clean3.rename(columns={
+    "4046": "small",
+    "4225": "large",
+    "4770": "extra_large",
+    "geography": "location"
+})
+
+# Melt the data
+df_avocado_long = df_avocado_region_clean3.melt(
+    id_vars=["date", "average_price", "type", "city", "total_volume",
+             "total_bags", "small_bags", "large_bags", "xlarge_bags"],
+    value_vars=["small", "large", "extra_large"],
+    var_name="hass_avocado_size",
+    value_name="quantity_sold"
+)
+
+df_avocado_long.head()
+```
+
+```{python}
+#make a better dataframe name but leave room for more transformation later if necessary
+df_arc = df_avocado_long
+```
+
+# Exercises
+
+## 3. Which major geographical region sold the most total organic, small Hass avocados in 2017?
+
+Answer:The Northeast region buys the most small bags of avocados 
+
+Assumption: "Major geographical region" means the broader regions such as "Great Lakes" that I have converted into the region column in the dataset not just the four US Census-style regions
+
+```{python}
+# Filter to organic in 2017 using your cleaned, unmelted table
+organic_2017 = df_avocado_region_clean3.query("type == 'organic' and year == 2017")
+
+# Sum small_bags by region
+region_sales = (
+    organic_2017
+      .groupby('region', as_index=False)['small_bags']
+      .sum()
+      .rename(columns={'small_bags': 'small_bags_total'})
+)
+
+# Rank regions by total small_bags
+top_region = region_sales.sort_values('small_bags_total', ascending=False)
+
+print(top_region)
+```
+
+## 4. Split the date variable into month, day, and year variables. In which month is the highest average volume of avocado sales?
+
+Answer: Month 5 (May) has the highest sales by month of 326377.749070
+
+```{python}
+sales_by_month = (
+    df_avocado_region_clean3
+      .groupby('month', as_index=False)['total_volume']
+      .mean()  
+      .sort_values('total_volume', ascending=False)
+      .head(5)
+)
+
+print(sales_by_month)
+```
+
+## 5. Which metro area geographical regions sold the most total avocados? Plot side-by-side box-plots of the total volume for only the five metro geographical regions with the highest averages for the total_volume variable.
+
+```{python}
+# Top 5 cities by mean total volume
+sales_by_metro = (
+    df_avocado_region_clean3
+      .groupby('city', as_index=False)['total_volume']
+      .mean()
+      .sort_values('total_volume', ascending=False)
+      .head(5)
+)
+
+print(sales_by_metro)
+```
+
+```{python}
+(p9.ggplot(
+        df_avocado_region_clean3.query("city in ['Los Angeles', 'New York City', 'Dallas / Fort Worth', 'Houston', 'Phoenix / Tucson']"),
+        p9.aes(
+            x="city",
+            y="total_volume",
+            fill="region"))
+    + p9.geom_boxplot()
+    + p9.labs(
+        title="Top 5 Metros by Volume",
+        x="Metro Areas",
+        y="Volume of Avocados Sold"
+    )
+    + p9.scale_fill_manual(
+        values={
+            "West": "#7570b3",
+            "Northeast": "#1c9e78",
+            "South Central": "#d95f01"
+        }
+    )
+    + p9.theme(
+        panel_background=p9.element_rect(fill="white"),
+        panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5)
+    )
+)
+```
+
+#Pivoting
+
+## 6. From your cleaned data set, create a data set with only these California regions and answer the following questions about these California regions only. "Los Angeles", "San Diego", "Sacramento", and "San Francisco".
+
+```{python}
+# Filter for California cities
+df_avocado_ca = df_avocado_region_clean3.query(
+    "city in ['Los Angeles', 'San Diego', 'Sacramento', 'San Francisco']")
+
+df_avocado_ca.head()
+```
+
+## 7. In which California regions is the price of organic versus conventional avocados most different? Support your answer with a few summary statistics AND a visualization.
+
+San Francisco shows the biggest average price difference however it has the highest average price for both conventional and organic already
+
+```{python}
+# Average avocado price by city and type (California only)
+avg_price_by_city_type = (
+    df_avocado_ca
+      .groupby(['city', 'type'], as_index=False)['average_price']
+      .mean()
+)
+
+print(avg_price_by_city_type)
+```
+
+```{python}
+#Difference between 
+price_diff = (
+    df_avocado_ca
+      .pivot_table(
+          values='average_price',
+          index='city',
+          columns='type',
+          aggfunc='mean'
+      )
+      .reset_index()
+)
+
+#  organic vs conventional 
+price_diff['price_difference'] = price_diff['organic'] - price_diff['conventional']
+
+print(price_diff)
+```
+
+```{python}
+(p9.ggplot(
+        price_diff,
+        p9.aes(
+            x="city",
+            y="price_difference",
+            fill="city"
+        )
+    )
+    + p9.geom_col()
+    + p9.labs(
+        title="Differences in Conventional and Organic Prices",
+        x="Metro Areas",
+        y="Difference in Average Price ($)"
+    )
+    + p9.scale_fill_manual(
+        values={
+            "Los Angeles": "#7570b3",
+            "Sacramento": "#1c9e78",
+            "San Diego": "#d95f01",
+            "San Francisco": "#e7298a"
+        }
+    )
+    + p9.scale_y_continuous(limits=(0, 1))
+    + p9.theme(
+        panel_background=p9.element_rect(fill="white"),
+        panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5)
+    )
+)
+```
+
+## 8. Recreated plot for all four California regions, the proportion of the average Hass avocado sales that are small, large, or extra large; conventional vs. organic. 
+
+```{python}
+total_volume_by_group = (
+    df_avocado_long.query("city in ['Los Angeles', 'San Diego', 'Sacramento', 'San Francisco']")
+      .groupby(['city', 'type'], as_index=False)['quantity_sold']
+      .sum()
+      .rename(columns={'quantity_sold': 'total_volume_group'})
+)
+```
+
+```{python}
+# Merge the total volume back into the main DataFrame
+df_proportions = pd.merge(
+    df_avocado_long,
+    total_volume_by_group,
+    on=['city', 'type'],
+    how='left'
+)
+
+# Calculate the proportion of each avocado size within city & type
+df_proportions['proportion'] = (
+    df_proportions['quantity_sold'] / df_proportions['total_volume_group']
+)
+
+df_proportions.head()
+```
+
+```{python}
+keep_cities = ['Los Angeles', 'San Diego', 'Sacramento', 'San Francisco']
+dfp = (
+    df_proportions
+    .loc[df_proportions['city'].isin(keep_cities)]
+    .copy()
+)
+dfp['city'] = pd.Categorical(dfp['city'], categories=keep_cities, ordered=True)
+dfp['hass_avocado_size'] = pd.Categorical(
+    dfp['hass_avocado_size'], categories=['extra_large','large','small'], ordered=True
+)
+```
+
+```{python}
+(p9.ggplot(dfp, p9.aes(x='city', y='proportion', fill='hass_avocado_size'))
+    + p9.geom_col(position='stack')
+    + p9.facet_wrap('~ type')
+    + p9.scale_fill_manual(values={
+        'extra_large': '#5a60a7',
+        'large':      '#499e77',
+        'small':      '#ca6101'
+      })
+    + p9.labs(title='Proportion of Average Hass Avocado Sales by Size (Fixed Order)',
+              x='California Region', y='Proportion')
+    + p9.theme(figure_size=(12, 6))
+)
+```
+
+#Using Outside Data
+
+Data taken from: https://www.redfin.com/news/data-center/
+
+```{python}
+#Import the data and Pivot wide to long 
+df_home_prices = pd.read_csv("med_sale_price.csv")
+df_home_prices.head()
+```
+
+```{python}
+long_home_prices = df_home_prices.melt(id_vars=['city'], var_name='month_year', value_name='median_sale_price')
+long_home_prices.head()
+```
+
+```{python}
+pd.to_datetime(long_home_prices['month_year'], format='%B %Y')
+long_home_prices['month_year'] = pd.to_datetime(long_home_prices['month_year'])
+
+long_home_prices['year'] = long_home_prices['month_year'].dt.year
+long_home_prices['month'] = long_home_prices['month_year'].dt.month
+long_home_prices = long_home_prices.drop(columns=['month_year'])
+long_home_prices.head()
+```
+
+```{python}
+df_arc_ca = df_avocado_region_clean3
+```
+
+```{python}
+print(df_arc_ca[['city', 'year', 'month']].dtypes)
+print(long_home_prices[['city', 'year', 'month']].dtypes)
+```
+
+```{python}
+df_arc_ca.head()
+```
+
+```{python}
+#Update the data by joining housing data on avocado data
+df_ca_avo_home = df_arc_ca.merge(long_home_prices, on=["city","year","month"])
+df_ca_avo_home.head()
+```
+
+```{python}
+#Create a variable that calculates how many avacados a home costs 
+df_ca_avo_home['avocados_to_home'] = df_ca_avo_home['median_sale_price'] / df_ca_avo_home['average_price']
+df_ca_avo_home.head()
+```
+
+The below code shares the average cost of a home in terms of the equivalent number of avacados that money can buy in the same city. 
+
+```{python}
+avos_per_home = (
+    df_ca_avo_home
+    .groupby(['city'])['avocados_to_home']
+    .mean()
+    .reset_index()
+    .round(2)
+    .sort_values(by='avocados_to_home', ascending=False)
+)
+
+print(avos_per_home)
+```
+
+```{python}
+(p9.ggplot(avos_per_home,
+p9.aes(
+  x = "city",
+  y = "avocados_to_home",
+  fill = "city"
+))
++ p9.geom_col() 
+    + p9.labs(
+        title="How Many Avocados to Buy the Median Home",
+        x="Metro areas", y="# of Avocados") 
+    + p9.scale_fill_manual(values={"Los Angeles":"#7570b3", "Sacramento":"#1c9e78",
+            "San Diego":"#d95f01", "San Francisco":"#e7298a"})
+    + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+    )
+```
+
+Compare this to the difference in average price between conventional and organic avocados above, as well as the comparison of average organic prices below. The correlation between avocado prices and home prices isn’t perfect, as evidenced by Sacramento, which had the second-highest average avocado price but the lowest number of avocados needed to purchase a home. This suggests that while avocados may be expensive, the real challenge in buying a home in these millennial-friendly cities lies in the overall housing costs. Homes in San Francisco and San Diego are expensive regardless of the relative cost of avocados.
+
+```{python}
+(p9.ggplot(price_diff,
+p9.aes(
+  x = "city",
+  y = "organic",
+  fill = "city"
+))
++ p9.geom_col() 
+    + p9.labs(
+        title="Average Organic Avocado Price by Metro Area",
+        x="Metro areas", y="Average Organic Price") 
+    + p9.scale_fill_manual(values={"Los Angeles":"#7570b3", "Sacramento":"#1c9e78",
+            "San Diego":"#d95f01", "San Francisco":"#e7298a"})
+    + p9.theme(panel_background=p9.element_rect(fill="white"), panel_grid_major=p9.element_line(color="#f2f7f8", size=0.5))
+    )
+```
+
