@@ -1,0 +1,223 @@
+---
+format:
+  html:
+    embed-resources: true
+execute:
+  echo: true
+code-fold: true
+author: James Compagno
+jupyter: python3
+title: Palmer Penguins Modeling
+---
+Import the Palmer Penguins dataset and print out the first few rows.
+
+Suppose we want to predict `bill_depth_mm` using the other variables in the dataset.
+
+Which variables would we need to **dummify**?
+
+
+
+
+
+
+
+```{python}
+from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+import numpy as np
+from palmerpenguins import load_penguins
+import plotnine as p9
+from sklearn.linear_model import LinearRegression
+```
+
+```{python}
+penguins = load_penguins()
+```
+
+```{python}
+dat = pd.get_dummies(penguins)
+```
+
+```{python}
+dat
+```
+
+```{python}
+enc = OneHotEncoder(handle_unknown='ignore')
+
+enc_fitted = enc.fit(penguins[['species']])
+enc_fitted.transform(penguins[['species']]).todense()
+```
+
+```{python}
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+
+scaler_fitted = scaler.fit(penguins[['bill_length_mm']])
+#This is normalize
+scaler_fitted.transform(penguins[['bill_length_mm']])
+```
+
+Let's use `bill_length_mm` to predict `bill_depth_mm`. Prepare your data and fit the following models on the entire dataset:
+
+* Simple linear regression (e.g. straight-line) model
+* Quadratic (degree 2 polynomial) model
+* Cubic (degree 3 polynomial) model
+* Degree 10 polynomial model
+
+Make predictions for each model and plot your fitted models on the scatterplot.
+
+```{python}
+# Simple linear regression (e.g. straight-line) model
+dat = penguins[['bill_length_mm', 'bill_depth_mm']].dropna().copy()
+
+X = dat[['bill_length_mm']]
+y = dat['bill_depth_mm']
+
+lr = LinearRegression()
+lr_fitted = lr.fit(X, y)
+
+dat['y_pred'] = lr_fitted.predict(X)
+dat = dat.sort_values('bill_length_mm')
+
+linear_plot = (
+    p9.ggplot(dat, p9.aes(x='bill_length_mm', y='bill_depth_mm'))
+    + p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1)
+    + p9.geom_line(p9.aes(y='y_pred'), color='red', size=1.2)
+    + p9.scale_size(range=(1, 20))
+    + p9.labs(
+        title='Linear Regression: Bill Depth vs Bill Length',
+        x='Bill length (mm)',
+        y='Bill depth (mm)'
+    )
+    + p9.theme_minimal()
+)
+```
+
+```{python}
+linear_plot
+```
+
+```{python}
+# Quadratic (degree 2 polynomial) model
+dat = dat[['bill_length_mm', 'bill_depth_mm']].dropna().copy()
+
+dat['x_sq'] = dat['bill_length_mm'] ** 2
+X = dat[['bill_length_mm', 'x_sq']]
+y = dat['bill_depth_mm']
+
+quad = LinearRegression()
+quad_fitted = quad.fit(X, y)
+
+dat['y_pred'] = quad_fitted.predict(X)
+dat = dat.sort_values('bill_length_mm')
+
+quad_plot = (
+    p9.ggplot(dat, p9.aes(x='bill_length_mm', y='bill_depth_mm'))
+    + p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1)
+    + p9.geom_line(p9.aes(y='y_pred'), color='red', size=1.2)
+    + p9.scale_size(range=(1, 20))
+    + p9.labs(
+        title='Quadratic (Degree 2) Regression: Bill Depth vs Bill Length',
+        x='Bill length (mm)',
+        y='Bill depth (mm)'
+    )
+    + p9.theme_minimal()
+)
+```
+
+```{python}
+quad_plot
+```
+
+```{python}
+# Cubic (degree 3 polynomial) model
+dat = dat[['bill_length_mm', 'bill_depth_mm']].dropna().copy()
+
+dat['x_sq'] = dat['bill_length_mm'] ** 2
+dat['x_cube'] = dat['bill_length_mm'] ** 3
+X = dat[['bill_length_mm', 'x_sq', 'x_cube']]
+y = dat['bill_depth_mm']
+
+cube = LinearRegression()
+cube_fitted = cube.fit(X, y)
+
+dat['y_pred'] = cube_fitted.predict(X)
+dat = dat.sort_values('bill_length_mm')
+
+cube_plot = (
+    p9.ggplot(dat, p9.aes(x='bill_length_mm', y='bill_depth_mm'))
+    + p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1)
+    + p9.geom_line(p9.aes(y='y_pred'), color='red', size=1.2)
+    + p9.scale_size(range=(1, 20))
+    + p9.labs(
+        title='Cubic (Degree 3) Regression: Bill Depth vs Bill Length',
+        x='Bill length (mm)',
+        y='Bill depth (mm)'
+    )
+    + p9.theme_minimal()
+)
+```
+
+```{python}
+cube_plot
+```
+
+```{python}
+# Degree 10 polynomial model
+dat = penguins[['bill_length_mm', 'bill_depth_mm']].dropna().copy()
+dat = dat[['bill_length_mm', 'bill_depth_mm']].dropna().copy()
+
+dat["x_sq"]   = dat["bill_length_mm"]**2
+dat["x_cube"] = dat["bill_length_mm"]**3
+dat["x_4"]    = dat["bill_length_mm"]**4
+dat["x_5"]    = dat["bill_length_mm"]**5
+dat["x_6"]    = dat["bill_length_mm"]**6
+dat["x_7"]    = dat["bill_length_mm"]**7
+dat["x_8"]    = dat["bill_length_mm"]**8
+dat["x_9"]    = dat["bill_length_mm"]**9
+dat["x_10"]   = dat["bill_length_mm"]**10
+
+X = dat[['bill_length_mm',
+         'x_sq',
+         'x_cube',
+         'x_4',
+         'x_5',
+         'x_6',
+         'x_7',
+         'x_8',
+         'x_9',
+         'x_10']]
+y = dat['bill_depth_mm']
+
+dec = LinearRegression()
+dec_fitted = dec.fit(X, y)
+
+dat['y_pred'] = dec_fitted.predict(X)
+dat = dat.sort_values('bill_length_mm')
+
+dec_plot = (
+    p9.ggplot(dat, p9.aes(x='bill_length_mm', y='bill_depth_mm'))
+    + p9.geom_point(shape='o', color='black', stroke=0.4, alpha=1)
+    + p9.geom_line(p9.aes(y='y_pred'), color='red', size=1.2)
+    + p9.scale_size(range=(1, 20))
+    + p9.labs(
+        title='Degree 10 Polynomial Regression: Bill Depth vs Bill Length',
+        x='Bill length (mm)',
+        y='Bill depth (mm)'
+    )
+    + p9.theme_minimal()
+)
+```
+
+```{python}
+dec_plot
+```
+
+* Are any of the models above underfitting the data? If so, which ones and how can you tell?
+    - I think all models are underfitting the data but linear is the worst because it does not in anyway flow with the data
+* Are any of thhe models above overfitting the data? If so, which ones and how can you tell?
+    - I dont think anything is overfitting given how all over the place this data is
+* Which of the above models do you think fits the data best and why?
+    - Degree 10 seems to flow with the data the best even then not that well
+
