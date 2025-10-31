@@ -1,0 +1,212 @@
+---
+format:
+  html:
+    embed-resources: true
+execute:
+  echo: true
+code-fold: true
+author: James Compagno
+jupyter: python3
+title: Palmer Penguins Modeling
+---
+Import the Palmer Penguins dataset and print out the first few rows.
+
+Suppose we want to predict `bill_depth_mm` using the other variables in the dataset.
+
+**Dummify** all variables that require this.
+
+
+
+
+
+
+
+```{python}
+from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+import numpy as np
+from palmerpenguins import load_penguins
+import plotnine as p9
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import mean_squared_error, r2_score
+```
+
+```{python}
+#Dummies
+penguins = load_penguins()
+dat = pd.get_dummies(penguins)
+dat = dat.dropna()
+dat
+```
+
+Let's use the other variables to predict `bill_depth_mm`. Prepare your data and fit the following models on a training dataset subset of the entire dataset:
+
+* Four different models, each containing a different set of predictor variables
+
+```{python}
+#Prep Data for training
+X = dat.drop(columns=['bill_depth_mm'])
+y = dat['bill_depth_mm']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=67)
+```
+
+```{python}
+#Model Storage 
+model_library = {}
+training_results = []
+records = []
+```
+
+```{python}
+#Model 1: Using Other Physical Characteristics  
+# bill_length_mm flipper_length_mm	body_mass_g
+
+#Model
+cols_Physical = ['bill_length_mm', 'flipper_length_mm', 'body_mass_g']
+model_library["Physical_Characteristics"] = LinearRegression().fit(X_train[cols_Physical], y_train)
+
+#Test
+y_pred = model_library["Physical_Characteristics"].predict(X_test[cols_Physical])
+mse = mean_squared_error(y_test, y_pred)
+records.append({
+        "Model": "Physical_Characteristics", "Split": "Test",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_test, y_pred)
+    })
+
+#Train
+y_pred = model_library["Physical_Characteristics"].predict(X_train[cols_Physical])
+mse = mean_squared_error(y_train, y_pred)
+records.append({
+        "Model": "Physical_Characteristics", "Split": "Train",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_train, y_pred)
+    })
+```
+
+```{python}
+#Model 2: Using Just Species and Island 
+#species_Adelie	species_Chinstrap	island_Biscoe	island_Dream	
+#Excluding: species_Gentoo and island_Torgersen as reference variables
+
+#Model
+cols_Spe_Isl = ['species_Adelie', 'species_Chinstrap', 'island_Biscoe', 'island_Dream']
+model_library["Species_Island"] = LinearRegression().fit(X_train[cols_Spe_Isl], y_train)
+
+#Test
+y_pred = model_library["Species_Island"].predict(X_test[cols_Spe_Isl])
+mse = mean_squared_error(y_test, y_pred)
+records.append({
+        "Model": "Species_Island", "Split": "Test",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_test, y_pred)
+    })
+
+#Train
+y_pred = model_library["Species_Island"].predict(X_train[cols_Spe_Isl])
+mse = mean_squared_error(y_train, y_pred)
+records.append({
+        "Model": "Species_Island", "Split": "Train",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_train, y_pred)
+    })
+```
+
+```{python}
+#Model 3: Physical Plus Sex and Species 
+# bill_length_mm flipper_length_mm	body_mass_g sex_female species_Adelie	species_Chinstrap
+#Excluding: species_Gentoo and island_Torgersen as reference variable
+
+#Model
+cols_PhysicalPlus = ['bill_length_mm', 'flipper_length_mm', 'body_mass_g', 'species_Adelie', 'species_Chinstrap', 'sex_female']
+model_library["Physical_Plus"] = LinearRegression().fit(X_train[cols_PhysicalPlus], y_train)
+
+#Test
+y_pred = model_library["Physical_Plus"].predict(X_test[cols_PhysicalPlus])
+mse = mean_squared_error(y_test, y_pred)
+records.append({
+        "Model": "Physical_Plus", "Split": "Test",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_test, y_pred)
+    })
+
+#Train
+y_pred = model_library["Physical_Plus"].predict(X_train[cols_PhysicalPlus])
+mse = mean_squared_error(y_train, y_pred)
+records.append({
+        "Model": "Physical_Plus", "Split": "Train",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_train, y_pred)
+    })
+```
+
+```{python}
+#Model 4: Everything 
+
+#Model
+model_library["Everything"] = LinearRegression().fit(X_train, y_train)
+
+#Test
+y_pred = model_library["Everything"].predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+records.append({
+        "Model": "Everything", "Split": "Test",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_test, y_pred)
+    })
+
+#Train
+y_pred = model_library["Everything"].predict(X_train)
+mse = mean_squared_error(y_train, y_pred)
+records.append({
+        "Model": "Everything", "Split": "Train",
+        "RMSE": np.sqrt(mse), "MSE": mse, "R2": r2_score(y_train, y_pred)
+    })
+```
+
+```{python}
+print(model_library)
+```
+
+```{python}
+print(records)
+```
+
+```{python}
+df = (pd.DataFrame(records)
+              .sort_values(["Model","Split"])
+              .reset_index(drop=True))
+df
+```
+
+Create a plot like the right plot of Fig 1. in our `Model Validation` chapter with the training and test error plotted for each of your four models.
+
+Which of your models was best?
+
+Physical_Characteristics was the worst model with the highest RMSE and MSE and loest R2. The Everything model was the best in all categories with Physical_Plus being almost as good
+
+```{python}
+df = df[["Model", "Split", "R2"]].copy()
+df["Split"] = df["Split"].replace({"Train": "Train R2", "Test": "Test R2"})
+```
+
+```{python}
+(p9.ggplot(df,
+p9.aes(
+    x = "Model",
+    y = "R2",
+    color = "Split",
+    group = "Split"
+))
++ p9.geom_line(size = 1.2)
++ p9.geom_point(size = 3)
++ p9.labs(
+    title = "Training vs Test R2 by Model",
+    x = "Model",
+    y = "R2 (bill_depth_mm)",
+    color = "Data Split"
+)
++ p9.theme_bw()
++ p9.theme(
+    figure_size = (9, 4.5),
+    panel_background = p9.element_rect(fill = "white"),
+    panel_grid_major = p9.element_line(color = "#f2f7f8", size = 0.5)
+))
+```
+
