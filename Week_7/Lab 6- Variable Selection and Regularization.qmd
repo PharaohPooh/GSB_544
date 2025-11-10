@@ -1,16 +1,12 @@
 ---
-title: 'Lab 6: Variable Selection and Regularization'
-author: James Compagno
+title: 'Lab 6'
 format:
   html:
-    code-fold: true
-    code-line-numbers: true
-    code-tools: true
-    self-contained: true
+    embed-resources: true
 execute:
-  message: false
-  echo: false
-  eval: false
+  echo: true
+code-fold: true
+author: James Compagno
 jupyter: python3
 ---
 
@@ -21,10 +17,9 @@ import numpy as np
 import plotnine as p9
 from sklearn.pipeline import Pipeline
 from sklearn.compose import make_column_selector, ColumnTransformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, PolynomialFeatures
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet 
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-from sklearn.metrics import r2_score
 ```
 
 # Dataset: Baseball Players
@@ -138,43 +133,7 @@ ct = ColumnTransformer(
 3.  Use cross-validation to estimate the MSE you would expect if you used this pipeline to predict 1989 salaries.
 
 ```{python}
-# # Model Name
-# model_name = "All_Features"
-# regression_type = "Linear"  
-
-# # Cross Validation Pipeline
-# pipe = Pipeline([
-#     ("preprocess", ct),
-#     ("linear_regression", LinearRegression())
-# ])
-
-# # Add to Library
-# model_library[model_name] = pipe.fit(X, y)
-
-# # Metrics Calculation 
-# rmse = cross_val_score(pipe, X, y, cv=5, scoring='neg_root_mean_squared_error')
-# mse = cross_val_score(pipe, X, y, cv=5, scoring='neg_mean_squared_error')
-# r2 = cross_val_score(pipe, X, y, cv=5, scoring='r2')
-
-# # Metrics Storage 
-# records.append({
-#     "Model": model_name,
-#     "Regression Type": regression_type,
-#     "Best Alpha": "NA", 
-#     "Best L1 Ratio": "NA", 
-#     "Split": "CV-5",
-#     "RMSE Mean": -rmse.mean(),
-#     "MSE Mean": -mse.mean(),
-#     "R2 Mean": r2.mean()
-# })
-
-# # Display
-# cumulative_models = (pd.DataFrame(records))
-# cumulative_models
-```
-
-```{python}
-def run_linear_regression_interactions(model_name, features=None):
+def run_linear_regression(model_name, features=None):
     """
     model_name - will be stored in model_library
     features - list or None
@@ -188,10 +147,9 @@ def run_linear_regression_interactions(model_name, features=None):
     else:
         X_subset = X
     
-    # Pipeline with interactions
+    # Cross Validation Pipeline
     pipe = Pipeline([
         ("preprocess", ct),
-        ("interactions", PolynomialFeatures(degree=2, interaction_only=True, include_bias=False)),
         ("linear_regression", LinearRegression())
     ])
     
@@ -200,16 +158,13 @@ def run_linear_regression_interactions(model_name, features=None):
     model_library[model_name] = pipe
     
     # Get top 10 coefficients
-    feature_names = pipe.named_steps['interactions'].get_feature_names_out()
+    feature_names = pipe.named_steps['preprocess'].get_feature_names_out()
     coefficients = pipe.named_steps['linear_regression'].coef_
     
     coef_df = pd.DataFrame({
         'Variable': feature_names,
         'Coefficient': coefficients
     }).sort_values('Coefficient', key=abs, ascending=False).head(10)
-    
-    # Store coefficients in model library
-    model_library[f"{model_name}_coefficients"] = coef_df
     
     # Metrics Calculation 
     rmse = cross_val_score(pipe, X_subset, y, cv=5, scoring='neg_root_mean_squared_error')
@@ -253,67 +208,7 @@ Interpretation: The top Coefficients for salary: CRuns (Career Runs), CAtBat (Ca
 4.  Report the MSE you would expect if you used this pipeline to predict 1989 salaries.
 
 ```{python}
-# # Model Name
-# model_name = "Ridge_All_Tuned"
-# regression_type = "Ridge"  
-
-# # Pipeline with Ridge
-# pipe = Pipeline([
-#     ("preprocess", ct),
-#     ("ridge", Ridge())  
-# ])
-
-# # GridSearchCV 
-# param_grid = {'ridge__alpha': np.logspace(-2, 3, 50)}
-# gscv = GridSearchCV(pipe, param_grid, cv=5, scoring='neg_mean_squared_error')
-# gscv.fit(X, y)
-
-# # Add best model to Library
-# model_library[model_name] = gscv.best_estimator_
-
-# # Get best alpha
-# best_alpha = gscv.best_params_['ridge__alpha']
-
-# # Metrics Calculation using best model
-# rmse = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='neg_root_mean_squared_error')
-# mse = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='neg_mean_squared_error')
-# r2 = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='r2')
-
-# # Metrics Storage 
-# records.append({
-#     "Model": model_name,
-#     "Regression Type": regression_type,
-#     "Best Alpha": best_alpha, 
-#     "Best L1 Ratio": "NA", 
-#     "Split": "CV-5",
-#     "RMSE Mean": -rmse.mean(),
-#     "MSE Mean": -mse.mean(),
-#     "R2 Mean": r2.mean()
-# })
-
-# # Display
-# cumulative_models = pd.DataFrame(records)
-# cumulative_models
-```
-
-```{python}
-# # Get coefficients
-# fitted_pipe = model_library[model_name]
-# feature_names = fitted_pipe.named_steps['preprocess'].get_feature_names_out()
-# coefficients = fitted_pipe.named_steps['ridge'].coef_
-
-
-# coef_df = pd.DataFrame({
-#     'Feature': feature_names,
-#     'Coefficient': coefficients
-# }).sort_values('Coefficient', key=abs, ascending=False)
-
-# # Top 10 coefficients
-# print(coef_df.head(10)) 
-```
-
-```{python}
-def run_ridge_regression_interactions(model_name, features=None):
+def run_ridge_regression(model_name, features=None):
     """
     model_name - will be stored in model_library
     features - list or None
@@ -327,10 +222,9 @@ def run_ridge_regression_interactions(model_name, features=None):
     else:
         X_subset = X
     
-    # Pipeline with Ridge and interactions
+    # Pipeline with Ridge
     pipe = Pipeline([
         ("preprocess", ct),
-        ("interactions", PolynomialFeatures(degree=2, interaction_only=True, include_bias=False)),
         ("ridge", Ridge())
     ])
     
@@ -347,7 +241,7 @@ def run_ridge_regression_interactions(model_name, features=None):
     
     # Get top 10 coefficients
     coef_df = pd.DataFrame({
-        'Variable': gscv.best_estimator_.named_steps['interactions'].get_feature_names_out(),
+        'Variable': gscv.best_estimator_.named_steps['preprocess'].get_feature_names_out(),
         'Coefficient': gscv.best_estimator_.named_steps['ridge'].coef_
     }).sort_values('Coefficient', key=abs, ascending=False).head(10)
     
@@ -396,67 +290,7 @@ Interpretation: The coefficients for ridge regression were very similar to norma
 4.  Report the MSE you would expect if you used this pipeline to predict 1989 salaries.
 
 ```{python}
-# # Model Name
-# model_name = "Lasso_All_Tuned"
-# regression_type = "Lasso"  
-
-# # Pipeline
-# pipe = Pipeline([
-#     ("preprocess", ct),
-#     ("lasso", Lasso()) 
-# ])
-
-# # GridSearchCV 
-# param_grid = {'lasso__alpha': np.logspace(-2, 3, 50)} 
-# gscv = GridSearchCV(pipe, param_grid, cv=5, scoring='neg_mean_squared_error')
-# gscv.fit(X, y)
-
-# # Add best model to Library
-# model_library[model_name] = gscv.best_estimator_
-
-# # Get best alpha
-# best_alpha = gscv.best_params_['lasso__alpha']
-
-# # Metrics Calculation using best model
-# rmse = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='neg_root_mean_squared_error')
-# mse = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='neg_mean_squared_error')
-# r2 = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='r2')
-
-# # Metrics Storage 
-# records.append({
-#     "Model": model_name,
-#     "Regression Type": regression_type,
-#     "Best Alpha": best_alpha, 
-#     "Best L1 Ratio": best_l1_ratio, 
-#     "Split": "CV-5",
-#     "RMSE Mean": -rmse.mean(),
-#     "MSE Mean": -mse.mean(),
-#     "R2 Mean": r2.mean()
-# })
-
-# # Display
-# cumulative_models = pd.DataFrame(records)
-# cumulative_models
-```
-
-```{python}
-# # Get coefficients
-# fitted_pipe = model_library[model_name]
-# feature_names = fitted_pipe.named_steps['preprocess'].get_feature_names_out()
-# coefficients = fitted_pipe.named_steps['lasso'].coef_
-
-
-# coef_df = pd.DataFrame({
-#     'Feature': feature_names,
-#     'Coefficient': coefficients
-# }).sort_values('Coefficient', key=abs, ascending=False)
-
-# # Top 10 coefficients
-# print(coef_df.head(10)) 
-```
-
-```{python}
-def run_lasso_regression_interactions(model_name, features=None):
+def run_lasso_regression(model_name, features=None):
     """
     model_name - will be stored in model_library
     features - list or None
@@ -470,10 +304,9 @@ def run_lasso_regression_interactions(model_name, features=None):
     else:
         X_subset = X
     
-    # Pipeline with Lasso and interactions
+    # Pipeline with Lasso
     pipe = Pipeline([
         ("preprocess", ct),
-        ("interactions", PolynomialFeatures(degree=2, interaction_only=True, include_bias=False)),
         ("lasso", Lasso())
     ])
     
@@ -490,7 +323,7 @@ def run_lasso_regression_interactions(model_name, features=None):
     
     # Get top 10 coefficients
     coef_df = pd.DataFrame({
-        'Variable': gscv.best_estimator_.named_steps['interactions'].get_feature_names_out(),
+        'Variable': gscv.best_estimator_.named_steps['preprocess'].get_feature_names_out(),
         'Coefficient': gscv.best_estimator_.named_steps['lasso'].coef_
     }).sort_values('Coefficient', key=abs, ascending=False).head(10)
     
@@ -537,74 +370,7 @@ run_lasso_regression("Lasso_All_Tuned", None)
 4.  Report the MSE you would expect if you used this pipeline to predict 1989 salaries.
 
 ```{python}
-# # Model Name
-# model_name = "ElasticNet_All_Tuned"  
-# regression_type = "ElasticNet" 
-
-# # Pipeline with ElasticNet
-# pipe = Pipeline([
-#     ("preprocess", ct),
-#     ("elasticnet", ElasticNet()) 
-# ])
-
-# # GridSearchCV 
-# param_grid = {
-#     'elasticnet__alpha': np.logspace(-2, 3, 50),
-#     'elasticnet__l1_ratio': [0, 0.25, 0.5, 0.75, 1]
-# } 
-# gscv = GridSearchCV(pipe, param_grid, cv=5, scoring='neg_mean_squared_error')
-# gscv.fit(X, y)
-
-# # Add best model to Library
-# model_library[model_name] = gscv.best_estimator_
-
-# # Get best Alpha and L1
-# best_alpha = gscv.best_params_['elasticnet__alpha'] 
-# best_l1_ratio = gscv.best_params_['elasticnet__l1_ratio'] 
-
-# print(f"Best alpha: {best_alpha:.4f}")
-# print(f"Best l1_ratio: {best_l1_ratio}")
-
-# # Metrics Calculation using best model
-# rmse = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='neg_root_mean_squared_error')
-# mse = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='neg_mean_squared_error')
-# r2 = cross_val_score(gscv.best_estimator_, X, y, cv=5, scoring='r2')
-
-# # Metrics Storage 
-# records.append({
-#     "Model": model_name,
-#     "Regression Type": regression_type,
-#     "Best Alpha": best_alpha,
-#     "Best L1 Ratio": best_l1_ratio, 
-#     "Split": "CV-5",
-#     "RMSE Mean": -rmse.mean(),
-#     "MSE Mean": -mse.mean(),
-#     "R2 Mean": r2.mean()
-# })
-
-# # Display
-# cumulative_models = pd.DataFrame(records)
-# cumulative_models
-```
-
-```{python}
-# # Get coefficients
-# fitted_pipe = model_library[model_name]
-# feature_names = fitted_pipe.named_steps['preprocess'].get_feature_names_out()
-# coefficients = fitted_pipe.named_steps['elasticnet'].coef_
-
-
-# coef_df = pd.DataFrame({
-#     'Feature': feature_names,
-#     'Coefficient': coefficients
-# }).sort_values('Coefficient', key=abs, ascending=False)
-
-# # Top 10 coefficients
-# print(coef_df.head(10)) 
-```
-
-```{python}
-def run_elasticnet_regression_interactions(model_name, features=None):
+def run_elasticnet_regression(model_name, features=None):
     """
     model_name - will be stored in model_library
     features - list or None
@@ -618,10 +384,9 @@ def run_elasticnet_regression_interactions(model_name, features=None):
     else:
         X_subset = X
     
-    # Pipeline with ElasticNet and interactions
+    # Pipeline with ElasticNet
     pipe = Pipeline([
         ("preprocess", ct),
-        ("interactions", PolynomialFeatures(degree=2, interaction_only=True, include_bias=False)),
         ("elasticnet", ElasticNet())
     ])
     
@@ -642,7 +407,7 @@ def run_elasticnet_regression_interactions(model_name, features=None):
     
     # Get top 10 coefficients
     coef_df = pd.DataFrame({
-        'Variable': gscv.best_estimator_.named_steps['interactions'].get_feature_names_out(),
+        'Variable': gscv.best_estimator_.named_steps['preprocess'].get_feature_names_out(),
         'Coefficient': gscv.best_estimator_.named_steps['elasticnet'].coef_
     }).sort_values('Coefficient', key=abs, ascending=False).head(10)
     
@@ -724,6 +489,8 @@ run_elasticnet_regression("Hits_Elasticnet", features=['Hits'])
 
 ### Interpretation 
 
+They were all roughly the same but Elastcicnet did the best in the MSE department 
+
 ## 2.  Using only the five best variables.
 
 ```{python}
@@ -744,9 +511,314 @@ run_elasticnet_regression("Top5_Elasticnet", features=['CRuns', 'Hits', 'AtBat',
 
 ### Interpretation 
 
+In this case Ridge took the lead but not by much all the MSEs are not too different between the models 
+
 ## 3.  Using the five best numeric variables *and* their interactions with the one best categorical variable.
 
+### Linear Model
+
+```{python}
+# Model Name
+model_name = "Lin_Num_Cat_Interact"
+regression_type = "Linear"  
+
+# Features
+numeric_vars = ['CRuns', 'Hits', 'AtBat', 'CRBI', 'CWalks']
+cat_var = 'Division'
+
+# Select and Subset
+X_subset = X[numeric_vars + [cat_var]].copy()
+X_subset['Division_Binary'] = (X_subset['Division'] == 'W').astype(int)
+
+# Create interaction
+X_subset['CRuns_x_Division'] = X_subset['CRuns'] * X_subset['Division_Binary']
+X_subset['Hits_x_Division'] = X_subset['Hits'] * X_subset['Division_Binary']
+X_subset['AtBat_x_Division'] = X_subset['AtBat'] * X_subset['Division_Binary']
+X_subset['CRBI_x_Division'] = X_subset['CRBI'] * X_subset['Division_Binary']
+X_subset['CWalks_x_Division'] = X_subset['CWalks'] * X_subset['Division_Binary']
+
+# Drop the temporary Division_Binary column
+X_subset = X_subset.drop(columns=['Division_Binary'])
+
+# Pipeline 
+pipe = Pipeline([
+    ("preprocess", ct),
+    ("linear_regression", LinearRegression())
+])
+
+# Fit and add to Library
+pipe.fit(X_subset, y)
+model_library[model_name] = pipe
+
+# Get top 10 coefficients
+feature_names = pipe.named_steps['preprocess'].get_feature_names_out()
+coefficients = pipe.named_steps['linear_regression'].coef_
+
+coef_df = pd.DataFrame({
+    'Variable': feature_names,
+    'Coefficient': coefficients
+}).sort_values('Coefficient', key=abs, ascending=False).head(10)
+
+# Metrics Calculation 
+rmse = cross_val_score(pipe, X_subset, y, cv=5, scoring='neg_root_mean_squared_error')
+mse = cross_val_score(pipe, X_subset, y, cv=5, scoring='neg_mean_squared_error')
+r2 = cross_val_score(pipe, X_subset, y, cv=5, scoring='r2')
+
+# Metrics Storage 
+records.append({
+    "Model": model_name,
+    "Regression Type": regression_type,
+    "Best Alpha": "NA", 
+    "Best L1 Ratio": "NA",
+    "Variables Used": len(X_subset.columns),
+    "Top 10 Variables": ", ".join(coef_df['Variable'].head(10).tolist()),
+    "Top 10 Coefficients": ", ".join([f"{c:.2f}" for c in coef_df['Coefficient'].head(10).tolist()]),
+    "Split": "CV-5",
+    "RMSE Mean": -rmse.mean(),
+    "MSE Mean": -mse.mean(),
+    "R2 Mean": r2.mean()
+})
+
+# Display
+cumulative_models = pd.DataFrame(records)
+cumulative_models
+```
+
+### Ridge Model
+
+```{python}
+# Model Name
+model_name = "Ridge_Num_Cat_Interact"
+regression_type = "Ridge"  
+
+# Features
+numeric_vars = ['CRuns', 'Hits', 'AtBat', 'CRBI', 'CWalks']
+cat_var = 'Division'
+
+# Select and Subset
+X_subset = X[numeric_vars + [cat_var]].copy()
+X_subset['Division_Binary'] = (X_subset['Division'] == 'W').astype(int)
+
+# Create interaction
+X_subset['CRuns_x_Division'] = X_subset['CRuns'] * X_subset['Division_Binary']
+X_subset['Hits_x_Division'] = X_subset['Hits'] * X_subset['Division_Binary']
+X_subset['AtBat_x_Division'] = X_subset['AtBat'] * X_subset['Division_Binary']
+X_subset['CRBI_x_Division'] = X_subset['CRBI'] * X_subset['Division_Binary']
+X_subset['CWalks_x_Division'] = X_subset['CWalks'] * X_subset['Division_Binary']
+
+# Drop the temporary Division_Binary column
+X_subset = X_subset.drop(columns=['Division_Binary'])
+
+# Pipeline with Ridge
+pipe = Pipeline([
+    ("preprocess", ct),
+    ("ridge", Ridge())  
+])
+
+# GridSearchCV 
+param_grid = {'ridge__alpha': np.logspace(-1, 2, 50)}
+gscv = GridSearchCV(pipe, param_grid, cv=5, scoring='neg_mean_squared_error')
+gscv.fit(X_subset, y)
+
+# Add best model to Library
+model_library[model_name] = gscv.best_estimator_
+
+# Get best alpha
+best_alpha = gscv.best_params_['ridge__alpha']
+
+# Get top 10 coefficients
+feature_names = gscv.best_estimator_.named_steps['preprocess'].get_feature_names_out()
+coefficients = gscv.best_estimator_.named_steps['ridge'].coef_
+
+coef_df = pd.DataFrame({
+    'Variable': feature_names,
+    'Coefficient': coefficients
+}).sort_values('Coefficient', key=abs, ascending=False).head(10)
+
+# Metrics Calculation using best model
+rmse = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='neg_root_mean_squared_error')
+mse = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='neg_mean_squared_error')
+r2 = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='r2')
+
+# Metrics Storage 
+records.append({
+    "Model": model_name,
+    "Regression Type": regression_type,
+    "Best Alpha": best_alpha, 
+    "Best L1 Ratio": "NA",
+    "Variables Used": len(X_subset.columns),
+    "Top 10 Variables": ", ".join(coef_df['Variable'].head(10).tolist()),
+    "Top 10 Coefficients": ", ".join([f"{c:.2f}" for c in coef_df['Coefficient'].head(10).tolist()]),
+    "Split": "CV-5",
+    "RMSE Mean": -rmse.mean(),
+    "MSE Mean": -mse.mean(),
+    "R2 Mean": r2.mean()
+})
+
+# Display
+cumulative_models = pd.DataFrame(records)
+cumulative_models
+```
+
+### Lasso Model
+
+```{python}
+# Model Name
+model_name = "Lasso_Num_Cat_Interact"
+regression_type = "Lasso"  
+
+# Features
+numeric_vars = ['CRuns', 'Hits', 'AtBat', 'CRBI', 'CWalks']
+cat_var = 'Division'
+
+# Select and Subset
+X_subset = X[numeric_vars + [cat_var]].copy()
+X_subset['Division_Binary'] = (X_subset['Division'] == 'W').astype(int)
+
+# Create interaction
+X_subset['CRuns_x_Division'] = X_subset['CRuns'] * X_subset['Division_Binary']
+X_subset['Hits_x_Division'] = X_subset['Hits'] * X_subset['Division_Binary']
+X_subset['AtBat_x_Division'] = X_subset['AtBat'] * X_subset['Division_Binary']
+X_subset['CRBI_x_Division'] = X_subset['CRBI'] * X_subset['Division_Binary']
+X_subset['CWalks_x_Division'] = X_subset['CWalks'] * X_subset['Division_Binary']
+
+# Drop the temporary Division_Binary column
+X_subset = X_subset.drop(columns=['Division_Binary'])
+
+# Pipeline
+pipe = Pipeline([
+    ("preprocess", ct),
+    ("lasso", Lasso()) 
+])
+
+# GridSearchCV 
+param_grid = {'lasso__alpha': np.logspace(-1, 2, 50)} 
+gscv = GridSearchCV(pipe, param_grid, cv=5, scoring='neg_mean_squared_error')
+gscv.fit(X_subset, y)
+
+# Add best model to Library
+model_library[model_name] = gscv.best_estimator_
+
+# Get best alpha
+best_alpha = gscv.best_params_['lasso__alpha']
+
+# Get top 10 coefficients
+feature_names = gscv.best_estimator_.named_steps['preprocess'].get_feature_names_out()
+coefficients = gscv.best_estimator_.named_steps['lasso'].coef_
+
+coef_df = pd.DataFrame({
+    'Variable': feature_names,
+    'Coefficient': coefficients
+}).sort_values('Coefficient', key=abs, ascending=False).head(10)
+
+# Metrics Calculation using best model
+rmse = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='neg_root_mean_squared_error')
+mse = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='neg_mean_squared_error')
+r2 = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='r2')
+
+# Metrics Storage 
+records.append({
+    "Model": model_name,
+    "Regression Type": regression_type,
+    "Best Alpha": best_alpha, 
+    "Best L1 Ratio": "NA",
+    "Variables Used": len(X_subset.columns),
+    "Top 10 Variables": ", ".join(coef_df['Variable'].head(10).tolist()),
+    "Top 10 Coefficients": ", ".join([f"{c:.2f}" for c in coef_df['Coefficient'].head(10).tolist()]),
+    "Split": "CV-5",
+    "RMSE Mean": -rmse.mean(),
+    "MSE Mean": -mse.mean(),
+    "R2 Mean": r2.mean()
+})
+
+# Display
+cumulative_models = pd.DataFrame(records)
+cumulative_models
+```
+
+### Elasticnet Model
+
+```{python}
+# Model Name
+model_name = "ElasticNet_Num_Cat_Interact"  
+regression_type = "ElasticNet" 
+
+# Features
+numeric_vars = ['CRuns', 'Hits', 'AtBat', 'CRBI', 'CWalks']
+cat_var = 'Division'
+
+# Select and Subset
+X_subset = X[numeric_vars + [cat_var]].copy()
+X_subset['Division_Binary'] = (X_subset['Division'] == 'W').astype(int)
+
+# Create interaction
+X_subset['CRuns_x_Division'] = X_subset['CRuns'] * X_subset['Division_Binary']
+X_subset['Hits_x_Division'] = X_subset['Hits'] * X_subset['Division_Binary']
+X_subset['AtBat_x_Division'] = X_subset['AtBat'] * X_subset['Division_Binary']
+X_subset['CRBI_x_Division'] = X_subset['CRBI'] * X_subset['Division_Binary']
+X_subset['CWalks_x_Division'] = X_subset['CWalks'] * X_subset['Division_Binary']
+
+# Drop the temporary Division_Binary column
+X_subset = X_subset.drop(columns=['Division_Binary'])
+
+# Pipeline with ElasticNet
+pipe = Pipeline([
+    ("preprocess", ct),
+    ("elasticnet", ElasticNet()) 
+])
+
+# GridSearchCV 
+param_grid = {
+    'elasticnet__alpha': np.logspace(-1, 2, 50),
+    'elasticnet__l1_ratio': [0, 0.25, 0.5, 0.75, 1]
+} 
+gscv = GridSearchCV(pipe, param_grid, cv=5, scoring='neg_mean_squared_error')
+gscv.fit(X_subset, y)
+
+# Add best model to Library
+model_library[model_name] = gscv.best_estimator_
+
+# Get best Alpha and L1
+best_alpha = gscv.best_params_['elasticnet__alpha'] 
+best_l1_ratio = gscv.best_params_['elasticnet__l1_ratio'] 
+
+# Get top 10 coefficients
+feature_names = gscv.best_estimator_.named_steps['preprocess'].get_feature_names_out()
+coefficients = gscv.best_estimator_.named_steps['elasticnet'].coef_
+
+coef_df = pd.DataFrame({
+    'Variable': feature_names,
+    'Coefficient': coefficients
+}).sort_values('Coefficient', key=abs, ascending=False).head(10)
+
+# Metrics Calculation using best model
+rmse = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='neg_root_mean_squared_error')
+mse = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='neg_mean_squared_error')
+r2 = cross_val_score(gscv.best_estimator_, X_subset, y, cv=5, scoring='r2')
+
+# Metrics Storage 
+records.append({
+    "Model": model_name,
+    "Regression Type": regression_type,
+    "Best Alpha": best_alpha,
+    "Best L1 Ratio": best_l1_ratio,
+    "Variables Used": len(X_subset.columns),
+    "Top 10 Variables": ", ".join(coef_df['Variable'].head(10).tolist()),
+    "Top 10 Coefficients": ", ".join([f"{c:.2f}" for c in coef_df['Coefficient'].head(10).tolist()]),
+    "Split": "CV-5",
+    "RMSE Mean": -rmse.mean(),
+    "MSE Mean": -mse.mean(),
+    "R2 Mean": r2.mean()
+})
+
+# Display
+cumulative_models = pd.DataFrame(records)
+cumulative_models
+```
+
 ### Interpretation 
+
+Elastic Net Takes the lead again 
 
 # Part III. Discussion
 
@@ -754,15 +826,98 @@ run_elasticnet_regression("Top5_Elasticnet", features=['CRuns', 'Hits', 'AtBat',
 
 Compare your Ridge models with your ordinary regression models. How did your coefficients compare? Why does this make sense?
 
+```{python}
+cumulative_models[cumulative_models['Regression Type'].isin(['Linear', 'Ridge'])].sort_values('Regression Type')
+```
+
+Coefficients for Ridge models are on a whole smaller than the linear regression models 
+
 ## B. LASSO
 
 Compare your LASSO model in I with your three LASSO models in II. Did you get the same $\lambda$ results? Why does this make sense? Did you get the same MSEs? Why does this make sense?
+
+```{python}
+cumulative_models[cumulative_models['Regression Type'] == 'Lasso']
+```
+
+While the latter Lasso models are not more than 10 Alpha units differengt than the First Lasso I would comfortably say they are all different. This makes sense as changing the number of features considered will impact alpha. The higher the features the lower the MSE as well. 
 
 ## C. Elastic Net
 
 Compare your MSEs for the Elastic Net models with those for the Ridge and LASSO models. Why does it make sense that Elastic Net always "wins"?
 
+```{python}
+cumulative_models[cumulative_models['Regression Type'].isin(['ElasticNet', 'Ridge', 'Lasso'])].sort_values('Regression Type')
+```
+
+Elastic Net makes sense in that it won because it was more tuned than the other model as both Alpha and L1 were tested 
+
 # Part IV: Final Model
 
 Fit your final best pipeline on the full dataset, and summarize your results in a few short sentences and a plot.
+
+"Best" is chosen by lowest MSE Mean
+
+```{python}
+cumulative_models.sort_values('R2 Mean', ascending=False).head(1)
+```
+
+```{python}
+# Features
+numeric_vars = ['CRuns', 'Hits', 'AtBat', 'CRBI', 'CWalks']
+cat_var = 'Division'
+
+# Select and Subset
+X_final = X[numeric_vars + [cat_var]].copy()
+X_final['Division_Binary'] = (X_final['Division'] == 'W').astype(int)
+
+# Create interaction
+X_final['CRuns_x_Division'] = X_final['CRuns'] * X_final['Division_Binary']
+X_final['Hits_x_Division'] = X_final['Hits'] * X_final['Division_Binary']
+X_final['AtBat_x_Division'] = X_final['AtBat'] * X_final['Division_Binary']
+X_final['CRBI_x_Division'] = X_final['CRBI'] * X_final['Division_Binary']
+X_final['CWalks_x_Division'] = X_final['CWalks'] * X_final['Division_Binary']
+
+# Drop temporary column
+X_final = X_final.drop(columns=['Division_Binary'])
+
+# Fit the model 
+best_pipe = model_library["Ridge_Num_Cat_Interact"]
+best_pipe.fit(X_final, y)
+
+# Generate predictions
+y_pred = best_pipe.predict(X_final)
+
+print("Final Model: Ridge_Num_Cat_Interact")
+print(f"R² Score: {best_pipe.score(X_final, y):f}")
+print(f"MSE: {((y - y_pred)**2).mean():f}")
+```
+
+```{python}
+# Prepare data for plotting
+df_plot = pd.DataFrame({
+    'Actual_Salary': y,
+    'Predicted_Salary': y_pred,
+    'Division': X['Division']
+})
+
+# Create the plot
+final_plot = (
+    p9.ggplot(df_plot, p9.aes(x='Actual_Salary', y='Predicted_Salary'))
+    + p9.geom_point(p9.aes(color='Division'), alpha=0.6, size=2)
+    + p9.geom_abline(intercept=0, slope=1, color='red', linetype='dashed', size=1)
+    + p9.labs(
+        title='Ridge Regression: Predicted vs Actual Salary (with Interactions)',
+        x='Actual Salary (thousands)',
+        y='Predicted Salary (thousands)'
+    )
+    + p9.scale_color_manual(values=['#1f77b4', '#ff7f0e'])
+    + p9.theme_minimal()
+    + p9.theme(figure_size=(8, 6))
+)
+
+final_plot
+```
+
+While visually the regression line seems to decently represent the data the final R² Score: 0.462072 shows that there is a lot of room left for improvement. Likely this model would benefit from further exploration of quadraic, exponential, or log models. 
 
