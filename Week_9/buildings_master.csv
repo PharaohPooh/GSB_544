@@ -1,0 +1,289 @@
+building_name,page_url,type,settlement,province,region,starting_faction
+,https://totalwarwarhammer.fandom.com/wiki/Lost_Tomb_Excavation,Landmark,Great Desert of Araby,Great Desert of Araby,The Southlands,The Famished
+,https://totalwarwarhammer.fandom.com/wiki/Secluded_Oasis,Landmark,Great Desert of Araby,Great Desert of Araby,The Southlands,The Famished
+,https://totalwarwarhammer.fandom.com/wiki/Watering_Hole,Landmark,Great Desert of Araby,Great Desert of Araby,The Southlands,The Famished
+,https://totalwarwarhammer.fandom.com/wiki/Catacombs_of_Quintex,Landmark,Ancient City of Quintex,Titan Peaks,Naggaroth,Cult of Pleasure
+,https://totalwarwarhammer.fandom.com/wiki/Repurposed_Holds,Landmark,Drackla Spire,Iron Coast,Naggaroth,The Ancestral Throng
+,https://totalwarwarhammer.fandom.com/wiki/Big_Fort,Landmark,Karak Vrag,Gash Kadrak,Mountains of Mourn,Fulg
+,https://totalwarwarhammer.fandom.com/wiki/City_of_Bronze,Landmark,Ka-Sabar,Shifting Sands,The Southlands,The Drakenhof Conclave
+,https://totalwarwarhammer.fandom.com/wiki/Desecrated_Grove,Landmark,The Haunted Forest,The Haunted Forest,The Dark Lands,Caravan of Blue Roses
+,https://totalwarwarhammer.fandom.com/wiki/Copher_Docks,Port,Copher,Coast of Araby,The Southlands,Chevaliers de Lyonesse
+,https://totalwarwarhammer.fandom.com/wiki/Pyramid_of_King_Amenemhetum,Landmark,Zandri,The Cracked Land,The Southlands,Knights of Origo
+,https://totalwarwarhammer.fandom.com/wiki/Great_Pyramid_of_Settra,Landmark,Khemri,Land of the Dead,The Southlands,Khemri
+,https://totalwarwarhammer.fandom.com/wiki/Pyramid_of_Prince_Tutankhanut,Landmark,Numas,Land of the Dead,The Southlands,Numas
+,https://totalwarwarhammer.fandom.com/wiki/Pyramid_of_King_Phar,Landmark,Quatar,Land of the Dead,The Southlands,Numas
+,https://totalwarwarhammer.fandom.com/wiki/Dragon_Tooth_Lighthouse,Landmark,Sartosa,Pirate's Current,The Old World,Pirates of Sartosa
+,https://totalwarwarhammer.fandom.com/wiki/Peg_Street_Pawnshop,Landmark,Sartosa,Pirate's Current,The Old World,Pirates of Sartosa
+,https://totalwarwarhammer.fandom.com/wiki/Smithy%27s_Tavern,Landmark,Sartosa,Pirate's Current,The Old World,Pirates of Sartosa
+,https://totalwarwarhammer.fandom.com/wiki/Rictus_Great_Clan-Hall,Landmark,Crookback Mountain,The Wolf Lands,The Dark Lands,Clan Rictus
+,https://totalwarwarhammer.fandom.com/wiki/Wreck_of_the_Heldenhammer,Landmark,The Galleon's Graveyard,The Great Ocean,The Great Ocean,The Dreadfleet
+,https://totalwarwarhammer.fandom.com/wiki/Erengrad_Docks,Port,Erengrad,River Lynsk,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/Karaz-a-Karak_Airfield,Landmark,Karaz-a-Karak,The Silver Road,World's Edge Mountains,Karaz-a-Karak
+,https://totalwarwarhammer.fandom.com/wiki/Throne_Hall_of_the_High_King,Landmark,Karaz-a-Karak,The Silver Road,World's Edge Mountains,Karaz-a-Karak
+,https://totalwarwarhammer.fandom.com/wiki/Marienburg_Docks,Port,Marienburg,The Wasteland,The Old World,Marienburg
+,https://totalwarwarhammer.fandom.com/wiki/Council_Chamber_of_the_Thirteen,Landmark,Skavenblight,The Blighted Marshes,The Old World,Clan Skryre
+,https://totalwarwarhammer.fandom.com/wiki/The_Shattered_Tower,Landmark,Skavenblight,The Blighted Marshes,The Old World,Clan Skryre
+,https://totalwarwarhammer.fandom.com/wiki/Warpstone_Telescope,Landmark,Skavenblight,The Blighted Marshes,The Old World,Clan Skryre
+,https://totalwarwarhammer.fandom.com/wiki/Fall_of_Man_(Herdstone),Special Herdstone,Altdorf,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/Crag_of_the_Cloven,Special Herdstone,Black Crag,Death Pass,The Badlands,Ironclaw Orcs
+,https://totalwarwarhammer.fandom.com/wiki/Bloodfeasters%27_Ruin,Special Herdstone,Castle Drakenhof,Southern Sylvania,The Old World,Sylvania
+,https://totalwarwarhammer.fandom.com/wiki/Defiled_Tournament_Grounds,Special Herdstone,Couronne,Marches of Couronne,The Old World,Couronne
+,https://totalwarwarhammer.fandom.com/wiki/Morrslieb%27s_Eclipse,Special Herdstone,Hexoatl,Isthmus of Lustria,Lustria,Hexoatl
+,https://totalwarwarhammer.fandom.com/wiki/Age_of_Desecration,Special Herdstone,Karaz-a-Karak,The Silver Road,World's Edge Mountains,Karaz-a-Karak
+,https://totalwarwarhammer.fandom.com/wiki/Sepulchral_Gate,Special Herdstone,Lothern,Eataine,Ulthuan,Eataine
+,https://totalwarwarhammer.fandom.com/wiki/Great_Herdstone_of_Cold,Special Herdstone,Naggarond,Iron Foothills,Naggaroth,Naggarond
+,https://totalwarwarhammer.fandom.com/wiki/Scorched_Oak,Special Herdstone,The Oak of Ages,Yn Edri Eternos,The Old World,Talsyn
+,https://totalwarwarhammer.fandom.com/wiki/Abandoned_Shrine_of_Widowmaker,Landmark,Shrine of Khaine,Nagarythe,Ulthuan,Scourge of Khaine
+,https://totalwarwarhammer.fandom.com/wiki/Black_Tower_of_Arkhan,Landmark,Black Tower of Arkhan,The Cracked Land,The Southlands,Rakaph Dynasty
+,https://totalwarwarhammer.fandom.com/wiki/Vault_of_Nagash,Landmark,Black Pyramid of Nagash,Great Mortis Delta,The Southlands,The Sentinels
+,https://totalwarwarhammer.fandom.com/wiki/Pyramid_of_King_Alcadizaar,Landmark,Bhagar,Shifting Sands,The Southlands,Dune Kingdoms
+,https://totalwarwarhammer.fandom.com/wiki/Straits_of_Lothern_(Port),Port,Lothern,Eataine,Ulthuan,Eataine
+,https://totalwarwarhammer.fandom.com/wiki/Stellar_Pyramids_of_the_Southern_Skies,Landmark,Hexoatl,Isthmus of Lustria,Lustria,Hexoatl
+,https://totalwarwarhammer.fandom.com/wiki/Great_Halls_of_Nagashizzar,Landmark,Nagashizzar,Broken Teeth,The Dark Lands,Clan Carrion
+,https://totalwarwarhammer.fandom.com/wiki/Ransacked_Tower_of_Prophecy,Landmark,Ghrond,Spiteful Peaks,Naggaroth,Ghrond
+,https://totalwarwarhammer.fandom.com/wiki/Sacked_Library_of_Hoeth,Landmark,White Tower of Hoeth,Saphery,Naggaroth,Saphery
+,https://totalwarwarhammer.fandom.com/wiki/Dark_Library_of_Hoeth,Landmark,White Tower of Hoeth,Saphery,Ulthuan,Saphery
+,https://totalwarwarhammer.fandom.com/wiki/Bordeleaux_Port,Port,Bordeleaux,River Brienne,The Old World,Aquitaine
+,https://totalwarwarhammer.fandom.com/wiki/Morceaux_Valley_Orchards,Landmark,Bordeleaux,River Brienne,The Old World,Aquitaine
+,https://totalwarwarhammer.fandom.com/wiki/The_Sea_Dragon%27s_Teeth,Port,Dragon Fang Mount,The Dragon Isles,The Dark Lands,Poxmakers of Nurgle
+,https://totalwarwarhammer.fandom.com/wiki/Golden_Tower_of_the_Gods,Landmark,The Golden Tower,The Golden Pass,The Southlands,Last Defenders
+,https://totalwarwarhammer.fandom.com/wiki/Lower_Levels_of_Hell_Pit,Landmark,Hell Pit,Black Blood Pass,The Old World,Clan Moulder
+,https://totalwarwarhammer.fandom.com/wiki/Depths_of_the_Pit,Landmark,Hell Pit,Black Blood Pass,The Old World,Clan Moulder
+,https://totalwarwarhammer.fandom.com/wiki/Flame_of_Asuryan,Landmark,Shrine of Asuryan,Eataine,Ulthuan,Cult of Excess
+,https://totalwarwarhammer.fandom.com/wiki/Ransacked_Dwarfen_Vaults,Landmark,Karak Eight Peaks,Eight Peaks,World's Edge Mountains,Crooked Moon Mutinous Gits
+,https://totalwarwarhammer.fandom.com/wiki/Pillar-City_Hub,Landmark,Karak Eight Peaks,Eight Peaks,World's Edge Mountains,Crooked Moon Mutinous Gits
+,https://totalwarwarhammer.fandom.com/wiki/Clan_Mors_Headquarters,Landmark,Misty Mountain,Blightwater,World's Edge Mountains,Clan Mors
+,https://totalwarwarhammer.fandom.com/wiki/Bog_Mine,Landmark,Galbaraz,Southern Badlands,The Badlands,Top Knotz
+,https://totalwarwarhammer.fandom.com/wiki/Tower_of_the_Bloodytooth,Landmark,The Fortress of Vorag,The Plain of Bones,The Dark Lands,Knights of Caledor
+,https://totalwarwarhammer.fandom.com/wiki/Corrupted_Spawning_Pool,Landmark,Oyxl,The Lost Valley,Lustria,Clan Pestilens
+,https://totalwarwarhammer.fandom.com/wiki/The_Emerald_Pools,Landmark,Itza,River Qurveza,Lustria,Itza
+,https://totalwarwarhammer.fandom.com/wiki/Lairs_of_Clar_Karond,Landmark,Clar Karond,Obsidian Peaks,Naggaroth,Clar Karond
+,https://totalwarwarhammer.fandom.com/wiki/Deep_Magma_Caverns,Landmark,Iron Rock,Death Pass,The Badlands,Scabby Eye
+,https://totalwarwarhammer.fandom.com/wiki/The_Den_of_Dread_Deeds,Landmark,Xing Po,Forests of the Moon,Far East,Clan Eshin
+,https://totalwarwarhammer.fandom.com/wiki/Lost_Necropolis_of_Mourkain,Landmark,Morgheim,Marshes of Madness,The Badlands,Sires of Mourkain
+,https://totalwarwarhammer.fandom.com/wiki/Beacon_of_Dawn,Landmark,Ziggurat of Dawn,The Isthmus Coast,Lustria,Skeggi
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Vaul,Landmark,Vaul's Anvil,Doom Glades,Lustria,Drackla Coven
+,https://totalwarwarhammer.fandom.com/wiki/Slave_Traders%27_Palaces,Landmark,Karond Kar,The Broken Lands,Naggaroth,Karond Kar
+,https://totalwarwarhammer.fandom.com/wiki/Fiery_Pits_of_Sacrifice,Landmark,Har Ganeth,The Road of Skulls,Naggaroth,Har Ganeth
+,https://totalwarwarhammer.fandom.com/wiki/Hellebron%27s_Palace,Landmark,Har Ganeth,The Road of Skulls,Naggaroth,Har Ganeth
+,https://totalwarwarhammer.fandom.com/wiki/Tower_of_Prophecy,Landmark,Ghrond,Spiteful Peaks,Naggaroth,Ghrond
+,https://totalwarwarhammer.fandom.com/wiki/Towers_of_the_Black_Guard,Landmark,Naggarond,Iron Foothills,Naggaroth,Naggarond
+,https://totalwarwarhammer.fandom.com/wiki/The_Black_Tower_of_Malekith,Landmark,Naggarond,Iron Foothills,Naggaroth,Naggarond
+,https://totalwarwarhammer.fandom.com/wiki/The_Altar_of_Ultimate_Darkness,Landmark,Altar of Ultimate Darkness,Iron Coast,Naggaroth,Clan Septik
+,https://totalwarwarhammer.fandom.com/wiki/Hall_of_Dragons,Landmark,Vaul's Anvil,Caledor,Ulthuan,Caledor
+,https://totalwarwarhammer.fandom.com/wiki/Corrupted_Flame_of_Asuryan,Landmark,Shrine of Asuryan,Eataine,Ulthuan,Cult of Excess
+,https://totalwarwarhammer.fandom.com/wiki/Amphitheatre_of_Yvresse,Landmark,Tor Yvresse,Yvresse,Ulthuan,Yvresse
+,https://totalwarwarhammer.fandom.com/wiki/Vandalised_Court_of_the_Everqueen,Landmark,Gaean Vale,Avelorn,Ulthuan,Avelorn
+,https://totalwarwarhammer.fandom.com/wiki/Forsaken_Port_of_Nagronath,Port,Isle of Wights,Albion,The Old World,Vanaheimlings
+,https://totalwarwarhammer.fandom.com/wiki/Face_of_Hag_Graef,Landmark,Hag Graef,The Black Flood,Naggaroth,Naggarond
+,https://totalwarwarhammer.fandom.com/wiki/Slayer_Shrine_of_Karak_Kadrin,Landmark,Karak Kadrin,Peak Pass,World's Edge Mountains,Karak Kadrin
+,https://totalwarwarhammer.fandom.com/wiki/Brightstone_Mine,Landmark,Mount Gunbad,Deadrock Gap,World's Edge Mountains,Crooked Moon
+,https://totalwarwarhammer.fandom.com/wiki/The_Silver_Hall,Landmark,Kraka Drak,Gianthome Mountains,The Old World,Masters of Innovation
+,https://totalwarwarhammer.fandom.com/wiki/Looted_Lothern_Palace,Landmark,Lothern,Eataine,Ulthuan,Eataine
+,https://totalwarwarhammer.fandom.com/wiki/Copper_Mountain,Landmark,Karak Izor,The Vaults,The Old World,Broken Nose
+,https://totalwarwarhammer.fandom.com/wiki/Oathgold_Mine,Landmark,Galbaraz,Southern Badlands,The Badlands,Top Knotz
+,https://totalwarwarhammer.fandom.com/wiki/Grand_Underway_Junction,Landmark,Karak Eight Peaks,Eight Peaks,World's Edge Mountains,Crooked Moon Mutinous Gits
+,https://totalwarwarhammer.fandom.com/wiki/Graves_of_the_Dragons,Landmark,The Bone Gulch,The Plain of Bones,The Dark Lands,Clan Helhein
+,https://totalwarwarhammer.fandom.com/wiki/Runestones_of_the_Upland_Plateau,Landmark,Karak Zorn,Southlands World's Edge Mountains,The Southlands,Ironbrow's Expedition
+,https://totalwarwarhammer.fandom.com/wiki/Couronne_Tournament_Grounds,Landmark,Couronne,Marches of Couronne,The Old World,Couronne
+,https://totalwarwarhammer.fandom.com/wiki/Abbey_of_the_Grail_Companions,Landmark,Couronne,Marches of Couronne,The Old World,Couronne
+,https://totalwarwarhammer.fandom.com/wiki/Shrine_of_Manann,Landmark,Bordeleaux,River Brienne,The Old World,Aquitaine
+,https://totalwarwarhammer.fandom.com/wiki/Tower_of_the_Enchantress,Landmark,Castle Carcassonne,Carcassonne,The Old World,Carcassonne
+,https://totalwarwarhammer.fandom.com/wiki/Peaks_of_Parravon,Landmark,Parravon,Forest of Chalons,The Old World,Parravon
+,https://totalwarwarhammer.fandom.com/wiki/Laurelorn_Forest_(Landmark),Landmark,Laurelorn Forest,Laurelorn Forest,The Old World,Laurelorn
+,https://totalwarwarhammer.fandom.com/wiki/Occupied_Imperial_Palace,Landmark,Altdorf,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/The_Chamber_of_Visions,Landmark,Chamber of Visions,The Turtle Isles,Lustria,Sentinels of Xeti
+,https://totalwarwarhammer.fandom.com/wiki/Bokha_Palace,Landmark,Kislev,River Urskoy,The Old World,The Ice Court
+,https://totalwarwarhammer.fandom.com/wiki/Bugman%27s_Brewery,Landmark,Karag Dromar,Black Water,World's Edge Mountains,Zhufbar
+,https://totalwarwarhammer.fandom.com/wiki/Stone_Troll_Quarry,Landmark,Massif Orcal,Barrows of Cuileux,The Old World,Broken Axe
+,https://totalwarwarhammer.fandom.com/wiki/Nuln_Grom_Prix,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/Statue_of_Grom,Landmark,Grom Peak,Rib Peaks,World's Edge Mountains,Red Eye
+,https://totalwarwarhammer.fandom.com/wiki/Lair_of_the_Broodmother_(Dormant),Landmark,Mount Arachnos,Southlands World's Edge Mountains,The Southlands,Arachnos
+,https://totalwarwarhammer.fandom.com/wiki/Dork%27s_Rock,Landmark,Black Crag,Death Pass,World's Edge Mountains,Clan Verms
+,https://totalwarwarhammer.fandom.com/wiki/Da_Biggest_Bonez,Landmark,Galbaraz,Southern Badlands,The Badlands,Top Knotz
+,https://totalwarwarhammer.fandom.com/wiki/Pig_Jousting_Arena,Landmark,Pigbarter,Scalded Delta,The Dark Lands,Thunderguts
+,https://totalwarwarhammer.fandom.com/wiki/Street_Racing_Circuit,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/Reinforced_Citadel,Landmark,Karak Eight Peaks,Eight Peaks,World's Edge Mountains,Crooked Moon Mutinous Gits
+,https://totalwarwarhammer.fandom.com/wiki/Court_of_the_Phoenix_King,Landmark,Lothern,Eataine,Ulthuan,Eataine
+,https://totalwarwarhammer.fandom.com/wiki/Sacred_Flame_of_Asuryan,Landmark,Shrine of Asuryan,Eataine,Ulthuan,Cult of Excess
+,https://totalwarwarhammer.fandom.com/wiki/Library_of_Hoeth,Landmark,White Tower of Hoeth,Saphery,Ulthuan,Saphery
+,https://totalwarwarhammer.fandom.com/wiki/Ancient_Subterranean_Palace,Landmark,Tor Koruali,Cothique,Ulthuan,Cothique
+,https://totalwarwarhammer.fandom.com/wiki/Court_of_the_Everqueen,Landmark,Gaean Vale,Avelorn,Ulthuan,Avelorn
+,https://totalwarwarhammer.fandom.com/wiki/White_Lion_Hunting_Grounds,Landmark,Tor Achare,Chrace,Ulthuan,Chrace
+,https://totalwarwarhammer.fandom.com/wiki/Black_Citadel_of_Anlec,Landmark,Tor Anlec,Nagarythe,Ulthuan,Scourge of Khaine
+,https://totalwarwarhammer.fandom.com/wiki/Hall_of_Charioteers,Landmark,Tor Anroc,Tiranoc,Ulthuan,Tiranoc
+,https://totalwarwarhammer.fandom.com/wiki/Occupied_Black_Tower_of_Malekith,Landmark,Naggarond,Iron Foothills,Naggaroth,Naggarond
+,https://totalwarwarhammer.fandom.com/wiki/World_Root_Entrance_(Dormant),Landmark,Gaean Vale,Avelorn,Naggaroth,Avelorn
+,https://totalwarwarhammer.fandom.com/wiki/Chameleon_Shrine,Landmark,Axlotl,Mosquito Swamps,Lustria,Xlanhuapec
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Mists,Landmark,Xlanhuapec,Mosquito Swamps,Lustria,Xlanhuapec
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_the_Eclipse,Landmark,Tlaxtlan,Piranha Swamps,Lustria,Tlaxtlan
+,https://totalwarwarhammer.fandom.com/wiki/Serpent_Lairs_of_Sotek,Landmark,Quetza,River Qurveza,Lustria,Pallid Nurslings
+,https://totalwarwarhammer.fandom.com/wiki/Shrine_of_Birds,Landmark,Oyxl,The Lost Valley,Lustria,Clan Pestilens
+,https://totalwarwarhammer.fandom.com/wiki/Plateau_of_the_Fallen_Gates,Landmark,Fallen Gates,Isthmus of Lustria,Lustria,Keepers of Bliss
+,https://totalwarwarhammer.fandom.com/wiki/Blessed_Incubator,Landmark,Hexoatl,Isthmus of Lustria,Lustria,Hexoatl
+,https://totalwarwarhammer.fandom.com/wiki/Pfeildorf_Wine_Market,Landmark,Pfeildorf,Solland,The Old World,The Golden Order
+,https://totalwarwarhammer.fandom.com/wiki/Nuln_Cannon_Foundry,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/Castle_Reikguard_Stables,Landmark,Altdorf,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/Altdorf_Conclave_of_Battle_Wizards,Landmark,Altdorf,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/Imperial_Palace,Landmark,Altdorf,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/The_Red_Moon_Inn,Landmark,Ubersreik,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/Knights_Panther_Stables,Landmark,Carroburg,Middenland,The Old World,Middenland
+,https://totalwarwarhammer.fandom.com/wiki/Middenheim_Great_Temple_of_Ulric,Landmark,Middenheim,Middenland,The Old World,Middenland
+,https://totalwarwarhammer.fandom.com/wiki/Blazing_Sun_Stables,Landmark,Talabheim,Talabecland,The Old World,Talabecland
+,https://totalwarwarhammer.fandom.com/wiki/The_Grand_Cauldron,Landmark,The Moot,Mootland,The Old World,Stirland
+,https://totalwarwarhammer.fandom.com/wiki/Pigbarter_Swamp-Wharf,Landmark,Pigbarter,Mouth Of Ruin,The Badlands,Thunderguts
+,https://totalwarwarhammer.fandom.com/wiki/Occupied_Library_of_Hoeth,Landmark,White Tower of Hoeth,Saphery,Ulthuan,Saphery
+,https://totalwarwarhammer.fandom.com/wiki/Archecclesiatium_of_Myrmidia,Landmark,Magritta,Estalia,Ulthuan,Estalia
+,https://totalwarwarhammer.fandom.com/wiki/Sacred_Grounds_of_Anath_Raema,Landmark,The Witchwood,The Witchwood,Naggaroth,Heralds of Ariel
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Isha,Landmark,Gaean Vale,Avelorn,Ulthuan,Avelorn
+,https://totalwarwarhammer.fandom.com/wiki/Sacred_Pools_of_Isha,Landmark,The Sacred Pools,The Sacred Pools,Lustria,Wardens of the Living Pools
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Kurnous,Landmark,Oreon's Camp,Heart of the Jungle,The Southlands,Bowmen of Oreon
+,https://totalwarwarhammer.fandom.com/wiki/Shadow-Groves_of_Loec,Landmark,Forest of Gloom,Forest of Gloom,The Southlands,Creeping Death
+,https://totalwarwarhammer.fandom.com/wiki/Wildwood_Waystones,Landmark,King's Glade,Talsyn,The Old World,Talsyn
+,https://totalwarwarhammer.fandom.com/wiki/Crag_Halls,Landmark,Crag Halls of Findol,Wydrioth,The Old World,Wydrioth
+,https://totalwarwarhammer.fandom.com/wiki/Starlight_Forge,Landmark,Vaul's Anvil,Torgovann,The Old World,Torgovann
+,https://totalwarwarhammer.fandom.com/wiki/Moonspring_Archives,Landmark,Waterfall Palace,Argwylon,The Old World,Argwylon
+,https://totalwarwarhammer.fandom.com/wiki/Verdant_Heart_of_Laurelorn,Landmark,Laurelorn Forest,Laurelorn Forest,The Old World,Laurelorn Forest
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Ereth_Khial,Landmark,Gryphon Wood,Gryphon Wood,The Old World,Wargrove of Woe
+,https://totalwarwarhammer.fandom.com/wiki/Gnoblar_Outpost,Landmark,The Haunted Forest,The Haunted Forest,The Dark Lands,Caravan of Blue Roses
+,https://totalwarwarhammer.fandom.com/wiki/Bamboo_Grove,Landmark,Jungles of Chi'an,Jungles of Chi'an,Far East,Spirits of Shanlin
+,https://totalwarwarhammer.fandom.com/wiki/Overgrown_Temple_of_Ereth_Khial,Landmark,Gryphon Wood,Gryphon Wood,The Old World,Wargrove of Woe
+,https://totalwarwarhammer.fandom.com/wiki/Ensorcelled_Heart_of_Laurelorn,Landmark,Laurelorn Forest,Laurelorn Forest,The Old World,Laurelorn Forest
+,https://totalwarwarhammer.fandom.com/wiki/Delliandra,Landmark,Waterfall Palace,Argwylon,The Old World,Argwylon
+,https://totalwarwarhammer.fandom.com/wiki/Druthandor,Landmark,Crag Halls of Findol,Wydrioth,The Old World,Wydrioth
+,https://totalwarwarhammer.fandom.com/wiki/Talrennic,Landmark,King's Glade,Talsyn,The Old World,Talsyn
+,https://totalwarwarhammer.fandom.com/wiki/Overgrown_Groves_of_Loec,Landmark,Forest of Gloom,Forest of Gloom,The Southlands,Creeping Death
+,https://totalwarwarhammer.fandom.com/wiki/Overgrown_Temple_of_Kurnous,Landmark,Oreon's Camp,Heart of the Jungle,The Southlands,Bowmen of Oreon
+,https://totalwarwarhammer.fandom.com/wiki/Overgrown_Sacred_Pools,Landmark,The Sacred Pools,The Sacred Pools,Lustria,Wardens of the Living Pools
+,https://totalwarwarhammer.fandom.com/wiki/Overgrown_Temple_of_Isha,Landmark,Gaean Vale,Avelorn,Ulthuan,Avelorn
+,https://totalwarwarhammer.fandom.com/wiki/Collapsed_Cavern,Landmark,The Awakening,Jungle of Webs,Lustria,The Awakened
+,https://totalwarwarhammer.fandom.com/wiki/Cylostra%27s_Opera_House,Landmark,Lothern,Eataine,Ulthuan,Eataine
+,https://totalwarwarhammer.fandom.com/wiki/The_Ninth_Wall,Landmark,Nan-Gau,Gunpowder Road,Far East,The Northern Provinces
+,https://totalwarwarhammer.fandom.com/wiki/Celestial_Court,Landmark,Wei-Jin,Imperial Road,Far East,Celestial Loyalists
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_the_Two_Moons,Landmark,Wei-Jin,Imperial Road,Far East,Celestial Loyalists
+,https://totalwarwarhammer.fandom.com/wiki/Paradise_Gardens,Landmark,Wei-Jin,Imperial Road,Far East,Celestial Loyalists
+,https://totalwarwarhammer.fandom.com/wiki/The_Grand_Observatory,Landmark,Xing Po,Forests of the Moon,Far East,Clan Eshin
+,https://totalwarwarhammer.fandom.com/wiki/The_Great_Embassy,Landmark,Shang-Yang,Warpstone Desert,Far East,Dissenter Lords of Jinshen
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_the_Jade-Blood_Sorcerers,Landmark,Weng Chang,Lands of Stone and Steel,Far East,Rebel Lords of Nan-Yang
+,https://totalwarwarhammer.fandom.com/wiki/Phoenix_Temple,Landmark,Fu Hung,Broken Lands of Tian Li,Far East,Burning Wind Nomads
+,https://totalwarwarhammer.fandom.com/wiki/Li_Temple,Landmark,Li Temple,Mount Li,Far East,Eastern River Lords
+,https://totalwarwarhammer.fandom.com/wiki/The_Standing_Stones,Landmark,Shiyama's Rest,Nongchang Basin,Far East,The Jade Custodians
+,https://totalwarwarhammer.fandom.com/wiki/Erengrad_Quay,Port,Erengrad,River Lynsk,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/Altar_of_Manaan,Landmark,Erengrad,River Lynsk,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/Ice_Witch_Quarters,Landmark,Erengrad,River Lynsk,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/The_Lynsk_Bridge,Landmark,Erengrad,River Lynsk,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/The_Paupers_Graveyard,Landmark,Praag,The Cursed City,The Old World,Ropsmenn Clan
+,https://totalwarwarhammer.fandom.com/wiki/Square_of_the_Citadel,Landmark,Praag,The Cursed City,The Old World,Ropsmenn Clan
+,https://totalwarwarhammer.fandom.com/wiki/Statue_of_Magnus_the_Pious,Landmark,Praag,The Cursed City,The Old World,Ropsmenn Clan
+,https://totalwarwarhammer.fandom.com/wiki/Bokha_Square,Landmark,Kislev,River Urskoy,The Old World,The Ice Court
+,https://totalwarwarhammer.fandom.com/wiki/Pilgrims_Square,Landmark,Kislev,River Urskoy,The Old World,The Ice Court
+,https://totalwarwarhammer.fandom.com/wiki/Bear_Totems,Landmark,Kislev,River Urskoy,The Old World,The Ice Court
+,https://totalwarwarhammer.fandom.com/wiki/Imperial_Diplomat_Quarters,Landmark,Kislev,River Urskoy,The Old World,The Ice Court
+,https://totalwarwarhammer.fandom.com/wiki/Cave_of_the_Rocky_Throne,Landmark,Lair of the Troll King,Gianthome Mountains,The Old World,Kraka Drak
+,https://totalwarwarhammer.fandom.com/wiki/Losteriksson%27s_Great_Hall,Landmark,Skeggi,The Isthmus Coast,Lustria,Skeggi
+,https://totalwarwarhammer.fandom.com/wiki/Goldtooth%27s_Toll_Gate,Landmark,Great Hall of Greasus,Ivory Road,Mountains of Mourn,Crossed Clubs
+,https://totalwarwarhammer.fandom.com/wiki/The_Fire_Mouth,Landmark,Fire Mouth,Bone Road,Mountains of Mourn,Blood Guzzlers
+,https://totalwarwarhammer.fandom.com/wiki/Gnoblar_Underbelly,Landmark,Pigbarter,Mouth Of Ruin,The Dark Lands,Thunderguts
+,https://totalwarwarhammer.fandom.com/wiki/Gorger_Haunt,Landmark,Gristle Valley,Southern Grey Mountains,The Old World,Ruins
+,https://totalwarwarhammer.fandom.com/wiki/Mausoleum_of_the_Mad_Count,Landmark,Castle Drakenhof,Southern Sylvania,The Old World,Sylvania
+,https://totalwarwarhammer.fandom.com/wiki/Von_Carstein_Court_Hall,Landmark,Castle Drakenhof,Southern Sylvania,The Old World,Sylvania
+,https://totalwarwarhammer.fandom.com/wiki/Ruins_of_Mourkain,Landmark,Galbaraz,Southern Badlands,The Badlands,Top Knotz
+,https://totalwarwarhammer.fandom.com/wiki/Fortress_of_Merovech,Landmark,Mousillon,Coast of Lyonesse,The Old World,Mousillon
+,https://totalwarwarhammer.fandom.com/wiki/Castle_Drachenfels%27_Catacombs,Landmark,Blackstone Post,Northern Grey Mountains,The Old World,The Barrow Legion
+,https://totalwarwarhammer.fandom.com/wiki/The_Blood_Keep,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/Cursed_Balefire_Flame,Landmark,Shrine of Asuryan,Eataine,Ulthuan,Cult of Excess
+,https://totalwarwarhammer.fandom.com/wiki/Dark_Tower_of_Prophecy,Landmark,Ghrond,Spiteful Peaks,Naggaroth,Ghrond
+,https://totalwarwarhammer.fandom.com/wiki/Flaming_Braziers_of_War,Landmark,Har Ganeth,The Road of Skulls,Naggaroth,Har Ganeth
+,https://totalwarwarhammer.fandom.com/wiki/Captured_Palace_of_Hellebron,Landmark,Har Ganeth,The Road of Skulls,Naggaroth,Har Ganeth
+,https://totalwarwarhammer.fandom.com/wiki/Holy_Monastery_of_the_Divine_Origo,Landmark,Fyrus,Coast of Araby,The Southlands,Strygos Empire
+,https://totalwarwarhammer.fandom.com/wiki/Vaults_of_the_Old_Ones,Landmark,Itza,River Qurveza,Lustria,Itza
+,https://totalwarwarhammer.fandom.com/wiki/Pyramid_of_King_Khatep,Landmark,Ka-Sabar,Shifting Sands,The Southlands,The Drakenhof Conclave
+,https://totalwarwarhammer.fandom.com/wiki/Deep_Passageways,Landmark,Karak Eight Peaks,Eight Peaks,World's Edge Mountains,Crooked Moon Mutinous Gits
+,https://totalwarwarhammer.fandom.com/wiki/The_Inevitable_City,Landmark,Palace of Princes,The Cold Mires,Northern Chaos Wastes,Subtle Torture
+,https://totalwarwarhammer.fandom.com/wiki/Ruined_Ogham_Stones,Landmark,Konquata,Albion,The Old World,The Sightless
+,https://totalwarwarhammer.fandom.com/wiki/Defiled_Ellyrian_Stables,Landmark,Tor Elyr,Ellyrion,Ulthuan,Ellyrion
+,https://totalwarwarhammer.fandom.com/wiki/The_Marcher_Fortress,Landmark,Fortress of the Damned,The Shard Lands,Northern Chaos Wastes,Deadwood Sentinels
+,https://totalwarwarhammer.fandom.com/wiki/The_Vale_of_Creatures,Landmark,The Twisted Towers,The Cold Mires,Northern Chaos Wastes,Subtle Torture
+,https://totalwarwarhammer.fandom.com/wiki/The_Pandemournium,Landmark,The Writhing Fortress,The Blood Marshes,Northern Chaos Wastes,Exquisite Pain
+,https://totalwarwarhammer.fandom.com/wiki/Corrupted_Swamp-Town,Landmark,Pigbarter,Mouth Of Ruin,The Dark Lands,Thunderguts
+,https://totalwarwarhammer.fandom.com/wiki/Ancient_Boneyard,Landmark,Galbaraz,Southern Badlands,The Badlands,Top Knotz
+,https://totalwarwarhammer.fandom.com/wiki/The_Khadeium_Paradox,Landmark,Red Fortress,The Red Wastes,Northern Chaos Wastes,Imperial Wardens
+,https://totalwarwarhammer.fandom.com/wiki/The_Wrathgate,Landmark,Bloodwind Keep,Eastern Steppes,Northern Chaos Wastes,Khazag
+,https://totalwarwarhammer.fandom.com/wiki/Lost_Underway_Junction,Landmark,Mine of the Bearded Skulls,Spine of Sotek,Lustria,Spine of Sotek Dwarfs
+,https://totalwarwarhammer.fandom.com/wiki/Royal_Ellyrian_Stables,Landmark,Tor Elyr,Ellyrion,Ulthuan,Ellyrion
+,https://totalwarwarhammer.fandom.com/wiki/Gate_to_the_Underworld_Sea,Landmark,Hag Graef,The Black Flood,Naggaroth,Naggarond
+,https://totalwarwarhammer.fandom.com/wiki/Challenge_Stone_Bulge,Landmark,The Challenge Stone,Chimera Plateau,Northern Chaos Wastes,Fleshgreeders
+,https://totalwarwarhammer.fandom.com/wiki/Sigmar%27s_Rock,Landmark,Mordheim,Ostermark,The Old World,Clan Kreepus
+,https://totalwarwarhammer.fandom.com/wiki/Lothern_Port,Port,Lothern,Eataine,Ulthuan,Eataine
+,https://totalwarwarhammer.fandom.com/wiki/Altdorf_Conclave_of_Forbidden_Magic,Landmark,Altdorf,Reikland,The Old World,Reikland
+,https://totalwarwarhammer.fandom.com/wiki/Malevolent_Museum,Landmark,Castle Drakenhof,Southern Sylvania,The Old World,Sylvania
+,https://totalwarwarhammer.fandom.com/wiki/Ironbrow%27s_Weapons_Shops,Landmark,Karak Azul,Southern World's Edge Mountains,World's Edge Mountains,Karak Azul
+,https://totalwarwarhammer.fandom.com/wiki/Machina_Daemonium_(building),Landmark,Blood Mountain,Northern Wastes,Northern Chaos Wastes,Crimson Skull
+,https://totalwarwarhammer.fandom.com/wiki/Karak_Azorn_Great_Hall,Landmark,Karak Azorn,Mountains of Mourn,Mountains of Mourn,Karak Azorn
+,https://totalwarwarhammer.fandom.com/wiki/Symposium_of_Change,Landmark,The Crystal Spires,Plain of Illusions,Northern Chaos Wastes,All-Seeing Eye
+,https://totalwarwarhammer.fandom.com/wiki/Defaced_Shrine,Landmark,Karak Kadrin,Peak Pass,World's Edge Mountains,Karak Kadrin
+,https://totalwarwarhammer.fandom.com/wiki/Warpforges,Landmark,Skavenblight,The Blighted Marshes,The Old World,Clan Skryre
+,https://totalwarwarhammer.fandom.com/wiki/Cannon_Foundry,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/Anurell%27s_Tomb,Landmark,Bitter Bay,Broken Teeth,The Dark Lands,Ruins
+,https://totalwarwarhammer.fandom.com/wiki/Dawn%27s_Harbour,Port,Fortress of Dawn,Dawn's Landing,The Southlands,Order of Loremasters
+,https://totalwarwarhammer.fandom.com/wiki/Flayed_Tower,Landmark,Flayed Rock,Gnoblar Country,The Dark Lands,Clan Treecherik
+,https://totalwarwarhammer.fandom.com/wiki/Infernal_Barracks,Landmark,Black Fortress,The Howling Wastes,The Dark Lands,The Legion of Azgorh
+,https://totalwarwarhammer.fandom.com/wiki/Karum,Landmark,The Sentinels,The Howling Wastes,The Dark Lands,Dark Land Orcs
+,https://totalwarwarhammer.fandom.com/wiki/The_Great_Temple_of_Hashut,Landmark,Zharr Naggrund,The Plain of Zharr,The Dark Lands,Servants of the Conclave
+,https://totalwarwarhammer.fandom.com/wiki/The_Great_Temple_of_Hashut_(Desecrated),Landmark,Zharr Naggrund,The Plain of Zharr,The Dark Lands,Servants of the Conclave
+,https://totalwarwarhammer.fandom.com/wiki/Volcanic_Deposits,Landmark,Tower of Gorgoth,The Wolf Lands,The Dark Lands,Overlords of Zharrduk
+,https://totalwarwarhammer.fandom.com/wiki/Bloodthirster_Prison,Landmark,The Daemon's Stump,The Wolf Lands,The Dark Lands,Overlords of Zharrduk
+,https://totalwarwarhammer.fandom.com/wiki/Ancient_Inner-City,Landmark,Uzkulak,Zorn Uzkul,The Dark Lands,Disciples of Hashut
+,https://totalwarwarhammer.fandom.com/wiki/Giant_Conveyor,Landmark,Uzkulak Black Fortress The Volary,Zorn Uzkul The Howling Wastes Stonesky Foothills,The Dark Lands Northern Chaos Wastes,Disciples of Hashut The Legion of Azgorh The Warhost of Zharr
+,https://totalwarwarhammer.fandom.com/wiki/Repurposed_Forges,Landmark,Nan-Gau,Gunpowder Road,Far East,The Northern Provinces
+,https://totalwarwarhammer.fandom.com/wiki/War_Machine_Graveyard,Landmark,Iron Storm,Eastern Steppes,Northern Chaos Wastes,Khazag
+,https://totalwarwarhammer.fandom.com/wiki/Tomb_of_Khengai_Khan,Landmark,The Volary,Stonesky Foothills,Northern Chaos Wastes,The Warhost of Zharr
+,https://totalwarwarhammer.fandom.com/wiki/Labourer_Pens,Landmark,Karond Kar,The Broken Lands,Naggaroth,Karond Kar
+,https://totalwarwarhammer.fandom.com/wiki/Corrupted_Standing_Stones,Landmark,Shiyama's Rest,Nongchang Basin,Far East,The Jade Custodians
+,https://totalwarwarhammer.fandom.com/wiki/Court_of_the_Covenant,Landmark,The Volary,Stonesky Foothills,Northern Chaos Wastes,The Warhost of Zharr
+,https://totalwarwarhammer.fandom.com/wiki/Ostankya%27s_Hut,Landmark,Bleak Hold Fortress,The Bleak Coast,Naggaroth,Daughters of the Forest
+,https://totalwarwarhammer.fandom.com/wiki/Njevski%27s_Citadel,Landmark,Castle Alexandronov,Troll Country,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/Great_Dragon_Fleet_Docks,Port,Fu-Chow,Jade River Delta,Far East,Dead Flag Fleet
+,https://totalwarwarhammer.fandom.com/wiki/Occupied_Celestial_Palace,Landmark,Wei-Jin,Imperial Road,Far East,Celestial Loyalists
+,https://totalwarwarhammer.fandom.com/wiki/Astromantic_Relay,Landmark,Great Turtle Isle The Southern Sentinels The Star Tower Hexoatl,The Turtle Isles Culchan Plains Volcanic Islands Isthmus of Lustria,Lustria,The Thousand Maws Southern Sentinels Clan Spittel Hexoatl
+,https://totalwarwarhammer.fandom.com/wiki/The_Palace_of_Scrolls,Landmark,Shang-Wu,Celestial Riverlands,Far East,Jiangshi Rebels The Jade Court (when playing The Jade Court)
+,https://totalwarwarhammer.fandom.com/wiki/Agrammon%27s_Menagerie,Landmark,Castle of Splendour,The Daemonium Hills,Southern Chaos Wastes,Rapturous Excess
+,https://totalwarwarhammer.fandom.com/wiki/Glacial_Caves,Landmark,Fateweaver's Crevasse,The Abyssal Glacier,Southern Chaos Wastes,Oracles of Tzeentch
+,https://totalwarwarhammer.fandom.com/wiki/Wreck_of_the_Talon_of_Agony,Landmark,Haichai,Plains of Xen,Far East,The Blessed Dread
+,https://totalwarwarhammer.fandom.com/wiki/Pillar_of_Bone,Landmark,Deff Gorge,The Barrier Idols,The Southlands,Exiles of Khorne
+,https://totalwarwarhammer.fandom.com/wiki/The_Valley_of_Many_Eyes,Landmark,The Black Pit,The Misty Hills,The Old World,The Black Pit Tribe
+,https://totalwarwarhammer.fandom.com/wiki/Huatl,Landmark,The Awakening,Jungle of Webs,Lustria,The Awakened
+,https://totalwarwarhammer.fandom.com/wiki/Monolith_of_the_Bloody_Hand,Landmark,Monolith of Bjorkil Bloody-Hand,Vanaheim Mountains,The Old World,World Walkers
+,https://totalwarwarhammer.fandom.com/wiki/Infected_Grove,Landmark,The Haunted Forest,The Haunted Forest,The Dark Lands,Caravan of Blue Roses
+,https://totalwarwarhammer.fandom.com/wiki/Bells_of_the_Lazarghs,Landmark,The Maw Gate,Ivory Road,Mountains of Mourn,Crossed Clubs
+,https://totalwarwarhammer.fandom.com/wiki/Altar_to_the_Ecstatic_Hunt,Landmark,Shrine of Kurnous,Chrace,Ulthuan,Seducers of Slaanesh
+,https://totalwarwarhammer.fandom.com/wiki/Hall_of_Rebirth,Landmark,Lahmia,Crater of the Waking Dead,The Southlands,The Silver Host
+,https://totalwarwarhammer.fandom.com/wiki/Hanged_Man%27s_Oak,Landmark,Mordheim,Ostermark,The Old World,Clan Kreepus
+,https://totalwarwarhammer.fandom.com/wiki/Purified_Oak,Landmark,Mordheim,Ostermark,The Old World,Clan Kreepus
+,https://totalwarwarhammer.fandom.com/wiki/Rampaging_Oak,Landmark,Mordheim,Ostermark,The Old World,Clan Kreepus
+,https://totalwarwarhammer.fandom.com/wiki/The_Widows_Tree,Landmark,Plesk,Eastern Oblast,The Old World,Druzhina Enclave
+,https://totalwarwarhammer.fandom.com/wiki/Splintered_Compass,Special Herdstone,Wei-Jin,Imperial Road,Far East,Celestial Loyalists
+,https://totalwarwarhammer.fandom.com/wiki/Wasteland_of_Hashut,Special Herdstone,Zharr-Naggrund,The Plain of Zharr,The Dark Lands,Servants of the Conclave
+,https://totalwarwarhammer.fandom.com/wiki/Ruins_of_Urskoy,Special Herdstone,Kislev,River Urskoy,The Old World,The Ice Court
+,https://totalwarwarhammer.fandom.com/wiki/Sacrificial_Snake_Pit_of_Sotek,Landmark,Shrine of Sotek,Jungles of Pahualaxa,Lustria,Blue Vipers
+,https://totalwarwarhammer.fandom.com/wiki/Jungles_of_the_Old_Ones,Landmark,Konquata,Albion,The Old World,The Sightless
+,https://totalwarwarhammer.fandom.com/wiki/Chaos_Troll_Lair_(Greenskins),Landmark,Erengrad,River Lynsk,The Old World,The Great Orthodoxy
+,https://totalwarwarhammer.fandom.com/wiki/Sealed_Tombs,Landmark,Silver Pinnacle,The Blasted Wastes,The Dark Lands,Lahmian Sisterhood
+,https://totalwarwarhammer.fandom.com/wiki/Lumber_Camp_(Dwarfs),Landmark,The Oak of Ages,Yn Edri Eternos,The Old World,Talsyn
+,https://totalwarwarhammer.fandom.com/wiki/Diplomatic_Halls,Landmark,Temple of Elemental Winds,Broken Lands of Tian Li,Far East,Burning Wind Nomads
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Elemental_Winds,Landmark,Temple of Elemental Winds,Broken Lands of Tian Li,Far East,Burning Wind Nomads
+,https://totalwarwarhammer.fandom.com/wiki/The_Throne_of_Chaos,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/Black_Rose_Stables,Landmark,Nuln,Wissenland,The Old World,Wissenland & Nuln
+,https://totalwarwarhammer.fandom.com/wiki/The_Gallows_Tree,Landmark,The Gallows Tree,K'datha,Northern Chaos Wastes,Dolgan
+,https://totalwarwarhammer.fandom.com/wiki/Bone_Nose_Idols,Landmark,Cuexotl,Central Jungles,The Southlands,The Bloody Handz
+,https://totalwarwarhammer.fandom.com/wiki/Iron_Penz,Landmark,Stormhenge,Southern Badlands,The Badlands,Top Knotz
+,https://totalwarwarhammer.fandom.com/wiki/Bonewood_Totems,Landmark,Springs of Eternal Life,Land of the Dead,The Southlands,Necrarch Brotherhood
+,https://totalwarwarhammer.fandom.com/wiki/Temple_of_Mists_(Corrupted),Landmark,Xlanhuapec,Mosquito Swamps,Lustria,Xlanhuapec
+,https://totalwarwarhammer.fandom.com/wiki/The_Emerald_Pools_(Corrupted),Landmark,Itza,River Qurveza,Lustria,Itza
+,https://totalwarwarhammer.fandom.com/wiki/Shrine_of_Birds_(Corrupted),Landmark,Oyxl,The Lost Valley,Lustria,Clan Pestilens
+House of Everlasting Life,,Landmark,Lahmia,Crater of the Waking Dead,The Southlands,The Silver Host
+Pilgrimage Grounds,,Landmark,Tower of The Stars,Eastern Colonies,Far East,
+Loremaster's Watch,,Landmark,Tower of the Sun,Eastern Colonies,Far East,
+Rebuilt Citadel,,Landmark,Tor Elasor,Eastern Colonies,Far East,
+Glittering Pits,,Landmark,The Star Tower,Volcanic Islands,Lustria,Clan Spittel
+,,Landmark,Arnheim,The Bleak Coast,Naggaroth,Bleak Holds
